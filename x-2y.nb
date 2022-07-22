@@ -1,0 +1,13 @@
+SetDirectory["theWorkDirectory"];
+ListLinePlot
+[
+ Table[Import["data.dat"][[All, 1 ;; i + 1 ;; i]], {i, 1, 2}], 
+ PlotRange -> {{xMin,xMax},{yMin,yMax}}, PlotMarkers -> None, ImageSize -> 500, 
+ AspectRatio -> 3/5, PlotLabel -> "The title of the picture", 
+ FrameLabel -> {"xLabel", "yLabel"}, PlotTheme -> "Scientific", 
+ PlotStyle -> {{Black, Thickness[0.003]}, {Dashed, Thickness[0.003]}, {DotDashed, Thickness[0.003]}}, 
+ FrameTicks -> Automatic, 
+ PlotLegends -> Placed[LineLegend[{"legendOne",  "legendTwo"}, 
+    LegendFunction -> (Framed[#, RoundingRadius -> 0, 
+        FrameStyle -> LightGray] &), LegendLayout -> "Column"],Scaled[{0.80, 0.7250}]]
+]
