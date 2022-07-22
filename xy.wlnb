@@ -2,7 +2,7 @@
  "cells": [
   {
    "kind": 1,
-   "value": "x-y plot ",
+   "value": "x-y plot \r\n\r\ndata.dat\r\n---------\r\nx1 y1\\\r\nx2 y2\\\r\n.  . \\\r\n.  . \\\r\n",
    "languageId": "markdown",
    "outputs": [],
    "metadata": {},
