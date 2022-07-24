@@ -1,0 +1,28 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "ListLinePlot[{\r\n  Transpose[{Exp[\r\n      Flatten[\r\n       Import[\"quenched QCD - 56.774137 - ml - mq 0.1/t.txt\", \r\n        \"Data\"]]]*10^6*0.955/scale, \r\n    Power[\r\n     Flatten[\r\n      Import[\"quenched QCD - 56.774137 - ml - mq 0.1/Mqk.txt\", \r\n       \"Data\"]], 1]}],\r\n  Transpose[{Exp[\r\n      Flatten[\r\n       Import[\"quenched QCD - 56.774137 - ml - mq 0.115/t.txt\", \r\n        \"Data\"]]]*10^6*0.955/scale, \r\n    Power[\r\n     Flatten[\r\n      Import[\"quenched QCD - 56.774137 - ml - mq 0.115/Mqk.txt\", \r\n       \"Data\"]], 1]}]\r\n  }, PlotRange -> {{0, 1}, All}, PlotMarkers -> None, \r\n ImageSize -> 400, AspectRatio -> 0.7, \r\n PlotLabel -> \"\\!\\(\\*SubscriptBox[\\(M\\), \\(q\\)]\\)\", \r\n FrameLabel -> {\"k(GeV)\", \"\\!\\(\\*SubscriptBox[\\(M\\), \\(q\\)]\\)(MeV)\"}, \r\n PlotLegends -> \r\n  Placed[\r\n   LineLegend[{\"\\!\\(\\*SubscriptBox[\\(M\\), \\(q\\\\\\ UV\\)]\\) = 0.1 MeV\", \r\n     \"\\!\\(\\*SubscriptBox[\\(M\\), \\(q\\\\\\ UV\\)]\\) = 0.115 MeV\", \r\n     \"\\!\\(\\*SubscriptBox[\\(M\\), \\(q\\\\\\ UV\\)]\\) = 3.0 MeV\", \r\n     \"\\!\\(\\*SubscriptBox[\\(M\\), \\(q\\\\\\ UV\\)]\\) = 10.0 MeV\"}, \r\n    LegendFunction -> Framed, LegendLa",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Print[\"ok一\"]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "SetDirectory[\"D:\\\\dataforion\\\\dteq80fs\\\\\"];\r\ndata=Import[\"vgr_rad.dat\"];\r\nContourPlot3D[data,PlotRange->{All,All,All},PlotTheme->\"Scientic\"]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

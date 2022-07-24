@@ -1,0 +1,505 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19748,        497]
+NotebookOptionsPosition[     18678,        474]
+NotebookOutlinePosition[     19123,        492]
+CellTagsIndexPosition[     19080,        489]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Globle`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\<F:\\\\doc\\\\ori1\\\\twoHCP\\\\two_oppsite_HCP\\\\275\>\"", "]"}], 
+  ";"}], "\n", 
+ RowBox[{"Print", "[", 
+  RowBox[{"Import", "[", "\"\<alog.dat\>\"", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8613344719866595`*^9, 3.8613345187075567`*^9}, {
+   3.8613469553830214`*^9, 3.8613469726188283`*^9}, 3.8617649329933677`*^9, {
+   3.861764999268619*^9, 3.8617649995936184`*^9}, {3.861765757403283*^9, 
+   3.8617657576382494`*^9}, {3.8657405083997593`*^9, 
+   3.865740521779426*^9}},ExpressionUUID->"d1fb62f6-0ac6-4845-88e4-\
+0e250eca30e5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"TimeRange", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1500"}], ",", "7500"}], "}"}]}], ";", 
+  RowBox[{"ListLinePlot", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Import", "[", "\"\<laser.dat\>\"", "]"}], 
+       "\[LeftDoubleBracket]", 
+       RowBox[{"All", ",", 
+        RowBox[{"1", ";;", 
+         RowBox[{"i", "+", "1"}], ";;", "i"}]}], "\[RightDoubleBracket]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "2"}], "}"}]}], "]"}], ",", 
+    RowBox[{"FrameLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Time (fs)\>\"", ",", "\"\<Intensity (V/m)\>\""}], "}"}]}], 
+    ",", 
+    RowBox[{"PlotStyle", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"Black", ",", 
+         RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"Red", ",", 
+         RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}]}], "}"}]}], ",", 
+    RowBox[{"PlotLegends", "\[Rule]", 
+     RowBox[{"Placed", "[", 
+      RowBox[{
+       RowBox[{"LineLegend", "[", 
+        RowBox[{"{", 
+         RowBox[{"\"\<1\>\"", ",", "\"\<2\>\""}], "}"}], "]"}], ",", 
+       RowBox[{"Scaled", "[", 
+        RowBox[{"{", 
+         RowBox[{"0.6", ",", "0.75"}], "}"}], "]"}]}], "]"}]}], ",", 
+    RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"TimeRange", ",", "All"}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<laser.jpeg\>\"", ",", "%"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8613345701870947`*^9, 3.861334597372864*^9}, {
+   3.861334649268617*^9, 3.861334680996015*^9}, 3.8613347289408474`*^9, {
+   3.8613405933383493`*^9, 3.8613406059316187`*^9}, {3.8613415307401347`*^9, 
+   3.8613415314624214`*^9}, {3.861346955445521*^9, 3.8613469763849764`*^9}, {
+   3.8617651621316156`*^9, 3.8617651740125136`*^9}, {3.861766037317196*^9, 
+   3.8617660429782624`*^9}, {3.8657408182599397`*^9, 
+   3.86574082524294*^9}},ExpressionUUID->"1a177010-fb6b-4800-84a2-\
+4a19e0985909"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"PrintTemporary", "[", "\"\<Ploting potentional\>\"", "]"}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NameImage", "[", "1", "]"}], "=", "\"\<Potential Energy\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NameImage", "[", "2", "]"}], "=", "\"\<Dipole Moment\>\""}], 
+  ";"}], "\n", 
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"ListLinePlot", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Import", "[", "\"\<pot.dat\>\"", "]"}], 
+       "\[LeftDoubleBracket]", 
+       RowBox[{"All", ",", 
+        RowBox[{"1", ";;", 
+         RowBox[{"i", "+", "1"}], ";;", "i"}]}], "\[RightDoubleBracket]"}], 
+      ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1.75", ",", "10"}], "}"}], ",", "All"}], "}"}]}], ",", 
+      RowBox[{"PlotMarkers", "\[Rule]", "None"}], ",", 
+      RowBox[{"AspectRatio", "\[Rule]", "2"}], ",", 
+      RowBox[{"PlotLabel", "\[Rule]", 
+       RowBox[{"NameImage", "[", "i", "]"}]}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<Internuclear distance (a.u.)\>\"", ",", 
+         "\"\<Intensity (a.u.)\>\""}], "}"}]}], ",", 
+      RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Black", ",", 
+           RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Dashed", ",", 
+           RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"DotDashed", ",", 
+           RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"FrameTicks", "\[Rule]", "Automatic"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "2"}], "}"}]}], "]"}], "]"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<PotentionalEnergy.jpeg\>\"", ",", "%"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8613347489073625`*^9, 3.8613347836067767`*^9}, {
+   3.861334816373002*^9, 3.8613348895322027`*^9}, {3.8613349239209023`*^9, 
+   3.861335236304035*^9}, {3.8613407139301233`*^9, 3.861340718178874*^9}, {
+   3.861341166981181*^9, 3.861341227378787*^9}, {3.861346771305399*^9, 
+   3.861346774609584*^9}, 3.861346820066933*^9, 3.861346959507696*^9, {
+   3.865740688772592*^9, 3.865740704312769*^9}, 3.8657408364970236`*^9},
+ CellLabel->"In[70]:=",ExpressionUUID->"5b52df5b-ed62-478c-b26f-fcd844cda363"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "PrintTemporary", "[", "\"\<Ploting Orientation and Alignment\>\"", "]"}], 
+  ";"}], "\n", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Import", "[", "\"\<cos1.dat\>\"", "]"}], 
+      "\[LeftDoubleBracket]", 
+      RowBox[{"All", ",", 
+       RowBox[{"1", ";;", 
+        RowBox[{"i", "+", "1"}], ";;", "i"}]}], "\[RightDoubleBracket]"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "2"}], "}"}]}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"TimeRange", ",", "All"}], "}"}]}], ",", 
+   RowBox[{"PlotMarkers", "\[Rule]", "None"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", 
+    FractionBox["3", "5"]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Orientation and Alignment\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Time (fs)\>\"", ",", "\"\<Value (arb. units)\>\""}], 
+     "}"}]}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Black", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Dashed", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"DotDashed", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"Placed", "[", 
+     RowBox[{
+      RowBox[{"LineLegend", "[", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Orientation\>\"", ",", "\"\<Alignment\>\""}], "}"}], 
+       "]"}], ",", 
+      RowBox[{"Scaled", "[", 
+       RowBox[{"{", 
+        RowBox[{"0.15", ",", "0.15"}], "}"}], "]"}]}], "]"}]}]}], "]"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<OrientationAndAlignment.jpeg\>\"", ",", "%"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.861335305167122*^9, 3.861335413679735*^9}, {
+   3.861339111775834*^9, 3.861339123590583*^9}, 3.861340724649412*^9, {
+   3.8613411415609035`*^9, 3.8613411613747053`*^9}, {3.8613413971819243`*^9, 
+   3.861341445549133*^9}, 3.861346959632696*^9, {3.865740579064329*^9, 
+   3.8657405792773657`*^9}, {3.8657407429611025`*^9, 
+   3.8657407432008286`*^9}},ExpressionUUID->"fa73b8eb-5e1c-4302-9709-\
+192fd7191152"],
+
+Cell[BoxData[{
+ RowBox[{"ListDensityPlot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Import", "[", 
+     RowBox[{"\"\<tap.dat\>\"", ",", "\"\<Table\>\""}], "]"}], 
+    "\[LeftDoubleBracket]", 
+    RowBox[{
+     RowBox[{"1", ";;", "All", ";;", "1"}], ",", 
+     RowBox[{"1", ";;", "3"}]}], "\[RightDoubleBracket]"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"Placed", "[", 
+     RowBox[{"Automatic", ",", "Right"}], "]"}]}], ",", 
+   RowBox[{"ColorFunction", "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Hue", "[", 
+       RowBox[{"Rescale", "[", 
+        RowBox[{"#1", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{".7", ",", "0"}], "}"}]}], "]"}], "]"}], "&"}], ")"}]}], 
+   ",", 
+   RowBox[{"InterpolationOrder", "\[Rule]", "5"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"TimeRange", ",", "All", ",", "All"}], "}"}]}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", 
+    RowBox[{"3", "/", "4"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<Angular distributions of molecular population\>\""}], ",", 
+   RowBox[{"PlotRangePadding", "\[Rule]", "0"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Time (ps)\>\"", ",", "\"\<Angle (degree)\>\""}], "}"}]}]}], 
+  "]"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<AnglarWavePacket.jpeg\>\"", ",", "%"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8613392893359785`*^9, 3.8613392951531844`*^9}, {
+   3.861341112835977*^9, 3.861341134828353*^9}, {3.8613417393786325`*^9, 
+   3.861341739863371*^9}, 3.8613469597889433`*^9, {3.8613481108783183`*^9, 
+   3.861348112567545*^9}, 3.861348415608941*^9, {3.8617655153074665`*^9, 
+   3.861765515827471*^9}, 3.861766379060419*^9, {3.8617665231520643`*^9, 
+   3.8617665240220327`*^9}, {3.8657408955134764`*^9, 3.865740901669919*^9}, 
+   3.865740985567007*^9, {3.8657410642406588`*^9, 3.865741072428526*^9}},
+ CellLabel->"In[79]:=",ExpressionUUID->"c65184c8-5be3-47f2-aff0-4aaec114af25"],
+
+Cell[BoxData[{
+ RowBox[{"ListDensityPlot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Import", "[", 
+     RowBox[{"\"\<trp.dat\>\"", ",", "\"\<Table\>\""}], "]"}], 
+    "\[LeftDoubleBracket]", 
+    RowBox[{
+     RowBox[{"1", ";;", "All", ";;", "1"}], ",", 
+     RowBox[{"1", ";;", "3"}]}], "\[RightDoubleBracket]"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"Placed", "[", 
+     RowBox[{"Automatic", ",", "Right"}], "]"}]}], ",", 
+   RowBox[{"ColorFunction", "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Hue", "[", 
+       RowBox[{"Rescale", "[", 
+        RowBox[{"#1", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{".7", ",", "0"}], "}"}]}], "]"}], "]"}], "&"}], ")"}]}], 
+   ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"TimeRange", ",", "All", ",", "All"}], "}"}]}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", 
+    RowBox[{"3", "/", "4"}]}], ",", 
+   RowBox[{"PlotRangePadding", "\[Rule]", "0"}], ",", 
+   RowBox[{"PlotRangePadding", "\[Rule]", "0"}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<Radial distributions of molecular population\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Time (ps)\>\"", ",", "\"\<R (a.u.)\>\""}], "}"}]}]}], 
+  "]"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<RadialWavePacket.jpeg\>\"", ",", "%"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8613397110414443`*^9, 3.861339743314269*^9}, {
+   3.861341071870285*^9, 3.8613411050883207`*^9}, {3.861341473525114*^9, 
+   3.8613414918437557`*^9}, 3.861346966570263*^9, {3.8613481045137615`*^9, 
+   3.8613481058783293`*^9}, {3.8613483970900097`*^9, 
+   3.8613484057668924`*^9}, {3.8617654138947306`*^9, 
+   3.8617654176506624`*^9}, {3.8617655043642163`*^9, 
+   3.8617655048023205`*^9}, {3.861765572226815*^9, 3.861765574100856*^9}, 
+   3.861766389153026*^9, {3.865740762603195*^9, 3.8657407690694723`*^9}},
+ CellLabel->"In[68]:=",ExpressionUUID->"e929e31e-dc9a-4f76-85a5-e2c31e6a86ce"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "PrintTemporary", "[", "\"\<Ploting population of rotational states\>\"", 
+   "]"}], ";"}], "\n", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Import", "[", "\"\<p_veq0.dat\>\"", "]"}], 
+      "\[LeftDoubleBracket]", 
+      RowBox[{"All", ",", 
+       RowBox[{"1", ";;", 
+        RowBox[{"i", "+", "1"}], ";;", "i"}]}], "\[RightDoubleBracket]"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "6"}], "}"}]}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"TimeRange", ",", "All"}], "}"}]}], ",", 
+   RowBox[{"PlotMarkers", "\[Rule]", "None"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", 
+    RowBox[{"3", "/", "5"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Population of rotational states\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Time (fs)\>\"", ",", "\"\<Population (arb. uints)\>\""}], 
+     "}"}]}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Black", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Blue", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Black", ",", "Dashed", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", "Dashed", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Blue", ",", "Dashed", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"Placed", "[", 
+     RowBox[{
+      RowBox[{"LineLegend", "[", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<|00>\>\"", ",", "\"\<|01>\>\"", ",", "\"\<|02>\>\"", ",", 
+         "\"\<|03>\>\"", ",", "\"\<|04>\>\"", ",", "\"\<|05>\>\""}], "}"}], 
+       "]"}], ",", 
+      RowBox[{"Scaled", "[", 
+       RowBox[{"{", 
+        RowBox[{"0.85", ",", "0.7"}], "}"}], "]"}]}], "]"}]}]}], "]"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<PopulationOfRotationalState0.jpeg\>\"", ",", "%"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.861340150351417*^9, 3.8613401734617434`*^9}, {
+   3.861340223530924*^9, 3.8613404228973913`*^9}, {3.8613404806987715`*^9, 
+   3.8613404974439125`*^9}, {3.8613405380396976`*^9, 
+   3.8613405401815825`*^9}, {3.861341046508566*^9, 3.8613410675385394`*^9}, 
+   3.86134696927013*^9, 3.861348007834711*^9},
+ CellLabel->"In[54]:=",ExpressionUUID->"f95ac57b-fefb-4912-a38d-638c6ee9d10f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "PrintTemporary", "[", "\"\<Ploting population of rotational states\>\"", 
+   "]"}], ";"}], "\n", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Import", "[", "\"\<p_veq1.dat\>\"", "]"}], 
+      "\[LeftDoubleBracket]", 
+      RowBox[{"All", ",", 
+       RowBox[{"1", ";;", 
+        RowBox[{"i", "+", "1"}], ";;", "i"}]}], "\[RightDoubleBracket]"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "6"}], "}"}]}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"TimeRange", ",", "All"}], "}"}]}], ",", 
+   RowBox[{"PlotMarkers", "\[Rule]", "None"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", 
+    RowBox[{"3", "/", "5"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Population of rotational states\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Time (fs)\>\"", ",", "\"\<Population (arb. uints)\>\""}], 
+     "}"}]}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Black", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Blue", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Black", ",", "Dashed", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", "Dashed", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Blue", ",", "Dashed", ",", 
+        RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"Placed", "[", 
+     RowBox[{
+      RowBox[{"LineLegend", "[", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<|10>\>\"", ",", "\"\<|11>\>\"", ",", "\"\<|12>\>\"", ",", 
+         "\"\<|13>\>\"", ",", "\"\<|14>\>\"", ",", "\"\<|15>\>\""}], "}"}], 
+       "]"}], ",", 
+      RowBox[{"Scaled", "[", 
+       RowBox[{"{", 
+        RowBox[{"0.85", ",", "0.6"}], "}"}], "]"}]}], "]"}]}]}], "]"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<PopulationOfRotationalState1.jpeg\>\"", ",", "%"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.8613404440189686`*^9, 3.8613404555862107`*^9}, {
+   3.861340507600509*^9, 3.861340509601714*^9}, {3.861340548415353*^9, 
+   3.861340551386532*^9}, {3.861340977725282*^9, 3.8613410592274036`*^9}, {
+   3.861341707952623*^9, 3.861341708281039*^9}, {3.861346951196093*^9, 
+   3.8613469695369797`*^9}, 3.8613480011107793`*^9},
+ CellLabel->"In[57]:=",ExpressionUUID->"7d1b8452-9156-4805-ad18-81d6c61aa30a"]
+},
+WindowSize->{644.25, 498.75},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+Magnification:>0.9 Inherited,
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (2021\:5e742\:67085\
+\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"3d04677e-50cb-45b0-aee1-e09ade8e6b12"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 683, 14, 105, "Input",ExpressionUUID->"d1fb62f6-0ac6-4845-88e4-0e250eca30e5"],
+Cell[1244, 36, 2166, 55, 220, "Input",ExpressionUUID->"1a177010-fb6b-4800-84a2-4a19e0985909"],
+Cell[3413, 93, 2571, 62, 367, "Input",ExpressionUUID->"5b52df5b-ed62-478c-b26f-fcd844cda363"],
+Cell[5987, 157, 2493, 62, 365, "Input",ExpressionUUID->"fa73b8eb-5e1c-4302-9709-192fd7191152"],
+Cell[8483, 221, 2111, 48, 235, "Input",ExpressionUUID->"c65184c8-5be3-47f2-aff0-4aaec114af25"],
+Cell[10597, 271, 2112, 49, 235, "Input",ExpressionUUID->"e929e31e-dc9a-4f76-85a5-e2c31e6a86ce"],
+Cell[12712, 322, 2969, 74, 398, "Input",ExpressionUUID->"f95ac57b-fefb-4912-a38d-638c6ee9d10f"],
+Cell[15684, 398, 2990, 74, 398, "Input",ExpressionUUID->"7d1b8452-9156-4805-ad18-81d6c61aa30a"]
+}
+]
+*)
+

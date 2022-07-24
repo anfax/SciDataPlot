@@ -1,0 +1,290 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11367,        282]
+NotebookOptionsPosition[     10696,        264]
+NotebookOutlinePosition[     11129,        281]
+CellTagsIndexPosition[     11086,        278]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "\"\<F:\\\\dataonedimion\\\\OUTPUT\>\"", "]"}],
+   ";"}], "\n", 
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"ListDensityPlot", "[", 
+    RowBox[{
+     RowBox[{"Import", "[", "\"\<wf1.dat\>\"", "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"All", ",", "All", ",", "All"}], "}"}]}], ",", 
+     RowBox[{"PlotLegends", "\[Rule]", 
+      RowBox[{"Placed", "[", 
+       RowBox[{"Automatic", ",", "Top"}], "]"}]}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", 
+      RowBox[{"3", "/", "4"}]}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"ListDensityPlot", "[", 
+    RowBox[{
+     RowBox[{"Import", "[", "\"\<wf2.dat\>\"", "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"All", ",", "All", ",", "All"}], "}"}]}], ",", 
+     RowBox[{"PlotLegends", "\[Rule]", 
+      RowBox[{"Placed", "[", 
+       RowBox[{"Automatic", ",", "Top"}], "]"}]}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", 
+      RowBox[{"3", "/", "4"}]}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"ListDensityPlot", "[", 
+    RowBox[{
+     RowBox[{"Import", "[", "\"\<wf3.dat\>\"", "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"All", ",", "All", ",", "All"}], "}"}]}], ",", 
+     RowBox[{"PlotLegends", "\[Rule]", 
+      RowBox[{"Placed", "[", 
+       RowBox[{"Automatic", ",", "Top"}], "]"}]}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", 
+      RowBox[{"3", "/", "4"}]}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}]}], "]"}]}], 
+  "}"}]}], "Input",
+ CellChangeTimes->{{3.8579575937009773`*^9, 3.8579576548685856`*^9}, {
+  3.857957790288744*^9, 3.857957819961316*^9}, {3.8579578966259155`*^9, 
+  3.8579579667917905`*^9}, {3.857958490210384*^9, 3.8579585321047964`*^9}, {
+  3.857958641473102*^9, 3.857958642346173*^9}, {3.85795868256227*^9, 
+  3.857958683748155*^9}, {3.857962114264447*^9, 3.8579621658819385`*^9}, {
+  3.8579656981083803`*^9, 3.857965860790971*^9}, {3.857965892171777*^9, 
+  3.85796597477915*^9}, {3.857966840817896*^9, 3.8579668515097246`*^9}},
+ CellLabel->
+  "In[283]:=",ExpressionUUID->"f7552fa5-7c90-4cf6-a39e-55a8d3df40bb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Test", " ", "absorb", " ", "functuon", " ", "of", " ", "OneDimIon"}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"abs", "[", 
+      RowBox[{"l_", ",", "r_", ",", "x_"}], "]"}], ":=", 
+     RowBox[{"1.0", "/", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        RowBox[{"Exp", "[", 
+         RowBox[{"l", "*", 
+          RowBox[{"(", 
+           RowBox[{"x", "-", "r"}], ")"}]}], "]"}]}], ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"abs", "[", 
+      RowBox[{"10.5", ",", "14.5", ",", "r"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "1.75", ",", "15"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", "0.612"}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.8579640084513702`*^9, 3.8579641951374483`*^9}, {
+   3.8579642376965113`*^9, 3.8579642434050007`*^9}, 3.8579643468482075`*^9, {
+   3.8579644498201814`*^9, 3.8579644562107162`*^9}, {3.8579645068210983`*^9, 
+   3.8579645975649705`*^9}, {3.8579646429961185`*^9, 3.857964692671294*^9}, {
+   3.8579647238383665`*^9, 3.8579647477802305`*^9}, {3.85796477849294*^9, 
+   3.8579647985884643`*^9}, {3.857964849773299*^9, 3.8579649452019253`*^9}, {
+   3.857964977587308*^9, 3.8579649875498424`*^9}, {3.8579650208782396`*^9, 
+   3.8579650433261857`*^9}, {3.8579650849260783`*^9, 3.857965127311309*^9}, {
+   3.857965280303012*^9, 3.8579653147664394`*^9}, {3.857965458908595*^9, 
+   3.8579656594365726`*^9}, {3.857966035308899*^9, 3.8579661089065943`*^9}, {
+   3.8582857408053045`*^9, 3.858285749497195*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"c97099f4-3887-4f37-889c-5b2d06d4987a"],
+
+Cell[BoxData[
+ RowBox[{"abs", "[", 
+  RowBox[{"10", ",", "10.5", ",", "11"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8579647538584003`*^9, 3.8579647679679623`*^9}},
+ CellLabel->
+  "In[287]:=",ExpressionUUID->"5b28b2ce-2231-4e5b-a0ef-bb66c823093b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"images", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"ListDensityPlot", "[", 
+       RowBox[{
+        RowBox[{"Import", "[", "\"\<wf1.dat\>\"", "]"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"All", ",", "All", ",", "All"}], "}"}]}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"Placed", "[", 
+          RowBox[{"Automatic", ",", "Top"}], "]"}]}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", 
+         RowBox[{"3", "/", "4"}]}], ",", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+        RowBox[{"FrameLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"\"\<R (a.u.)\>\"", ",", "\"\<\>\""}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Time (fs)\>\"", ",", "\"\<\>\""}], "}"}]}], 
+          "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ListDensityPlot", "[", 
+       RowBox[{
+        RowBox[{"Import", "[", "\"\<wf2.dat\>\"", "]"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"All", ",", "All", ",", "All"}], "}"}]}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"Placed", "[", 
+          RowBox[{"Automatic", ",", "Top"}], "]"}]}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", 
+         RowBox[{"3", "/", "4"}]}], ",", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+        RowBox[{"FrameLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"\"\<R (a.u.)\>\"", ",", "\"\<\>\""}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Time (fs)\>\"", ",", "\"\<\>\""}], "}"}]}], 
+          "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ListDensityPlot", "[", 
+       RowBox[{
+        RowBox[{"Import", "[", "\"\<wf3.dat\>\"", "]"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"All", ",", "All", ",", "All"}], "}"}]}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"Placed", "[", 
+          RowBox[{"Automatic", ",", "Top"}], "]"}]}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", 
+         RowBox[{"3", "/", "4"}]}], ",", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+        RowBox[{"FrameLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"\"\<R (a.u.)\>\"", ",", "\"\<\>\""}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Time (fs)\>\"", ",", "\"\<\>\""}], "}"}]}], 
+          "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ListDensityPlot", "[", 
+       RowBox[{
+        RowBox[{"Import", "[", "\"\<wf3.dat\>\"", "]"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"All", ",", "All", ",", "All"}], "}"}]}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"Placed", "[", 
+          RowBox[{"Automatic", ",", "Top"}], "]"}]}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", 
+         RowBox[{"3", "/", "4"}]}], ",", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+        RowBox[{"FrameLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"\"\<R (a.u.)\>\"", ",", "\"\<\>\""}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Time (fs)\>\"", ",", "\"\<\>\""}], "}"}]}], 
+          "}"}]}]}], "]"}]}], "}"}]}], ";"}], "\n", 
+  RowBox[{
+  "(*", "\:751f\:62104\:4e2a\:6807\:7b7e", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"labeles", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Rasterize", "[", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{
+          RowBox[{"#", "<>", "\"\<)\>\""}], ",", "10", ",", "Black", ",", 
+          RowBox[{"FontFamily", "\[Rule]", "\"\<Calibri\>\""}]}], "]"}], ",", 
+        RowBox[{"ImageResolution", "\[Rule]", "500"}], ",", 
+        RowBox[{"RasterSize", "\[Rule]", "500"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "14"}]}], "]"}], "&"}], "/@", 
+     RowBox[{"CharacterRange", "[", 
+      RowBox[{"\"\<a\>\"", ",", "\"\<d\>\""}], "]"}]}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "\:7ec4\:5408\:6807\:7b7e\:548c\:56fe\:7247", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"il", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"Riffle", "[", 
+      RowBox[{"labeles", ",", "images"}], "]"}], ",", "4"}], "]"}]}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "\:7f51\:683c", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"grid", "=", 
+   RowBox[{"Grid", "[", 
+    RowBox[{"il", ",", 
+     RowBox[{"Alignment", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Left", ",", "Top"}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "\:8f93\:51fa\:56fe\:7247", "*)"}]}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<waverad.png\>\"", ",", "grid"}], "]"}]}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBmIQnbpm4+yafW8cYXRO0rTlIDqO8SGYDtNRXgeiiy/b
+gemW87VbQLQLw/ZdIPqW+Kx9IFpAxeAAiK4qmX0URK/yeH4aLJ75/RKIPmuz
+9waIPnD1+h0QfWT3+ntg2uXEMxCtNP8kmF4eyfgeRHupnvkMok8ds/sBond0
+bwfTKvuEWGqB9IeJdqwgmm+RogiI/jbjEJhO4o6XBtEaPzpkQPSl51eUQXQH
+K6MKWP6AoCaI3lPrYQyiTeTDzEH07NQuexDttKvKFUSv9q4B04t6n/uD6DlX
+WwNANACtYan8
+  "],
+ CellLabel->
+  "In[288]:=",ExpressionUUID->"8a2f2e55-7c33-4590-a3a2-b50d29716441"]
+},
+WindowSize->{573., 416.25},
+WindowMargins->{{Automatic, 99}, {Automatic, 0}},
+Magnification:>1. Inherited,
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (February 5, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"de419dfc-0873-4db5-a2e6-05d0fa946b88"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2348, 53, 202, "Input",ExpressionUUID->"f7552fa5-7c90-4cf6-a39e-55a8d3df40bb"],
+Cell[2909, 75, 1849, 40, 106, "Input",ExpressionUUID->"c97099f4-3887-4f37-889c-5b2d06d4987a"],
+Cell[4761, 117, 247, 5, 28, "Input",ExpressionUUID->"5b28b2ce-2231-4e5b-a0ef-bb66c823093b"],
+Cell[5011, 124, 5681, 138, 548, "Input",ExpressionUUID->"8a2f2e55-7c33-4590-a3a2-b50d29716441"]
+}
+]
+*)
+

@@ -1,0 +1,94 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "ClearAll[\"Global`*\"]\r\nSetDirectory[\"D:\\\\\"];\r\nvm2au = 1.944686937090702/10^12;\r\nfs2au = 41.3412760;\r\ncm2au = 4.5554927/10^6;\r\nHz2au = 1.519836862300743/10^16;\r\nTHz2au = 1.519836862300743/10^4;\r\n",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\ngaussianPulseElectricField[E0_, t_, \r\n   t0_, \\[Omega]_, \\[Tau]_, \\[Phi]_] := \r\n  E0 E^(-((4 Log[2] t^2)/\\[Tau]^2)) Cos[\\[Omega] (t - t0) + \\[Phi]];\r\nTraditionalForm[\r\n Subscript[E, 0] E^(-((4 Log[2] t^2)/\\[Tau]^2))\r\n   Cos[\\[Omega] (t - Subscript[t, 0]) + \\[Phi]]]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "f[\\[Omega]_] := \r\n Integrate[\r\n  E0 E^(-((4 Log[2] t^2)/\\[Tau]^2))\r\n    Cos[\\[Omega] (t - t0) + \\[Phi]] Exp[I \\[Omega] t], {t, -Infinity, \r\n   Infinity}]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "funcitionBlackman[t_, tau_] := \r\n  Piecewise[{{0.50 Cos[(2 \\[Pi] t)/tau] + 0.08 Cos[(4 \\[Pi] t)/tau] + \r\n      0.42, -(tau/2) <= t <= tau/2}, {0, t < -(tau/2)}, {0, \r\n     t > tau/2}}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "pulseSpectrogram[t_, \\[Omega]_] := Abs[\\!\\(\r\n\\*SubsuperscriptBox[\\(\\[Integral]\\), \\(t - 10\\ \\[Tau]\\), \\(t + \r\n      10  \\[Tau]\\)]\\(gaussianPulseElectricField[E0, t1, \r\n      t0, \\[Omega]0, \\[Tau], \\[Phi]]\\ funcitionBlackman[t1 - t, \r\n      5  \\[Tau]]\\ Exp[I\\ \\[Omega]\\ t1] \\[DifferentialD]t1\\)\\)]^2;",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "eWigner[t_, w_] := \\!\\(\r\n\\*SubsuperscriptBox[\\(\\[Integral]\\), \\(\\(-200\\)\\ fs2au\\), \\(200\\ \\\r\nfs2au\\)]\\(\\(gaussianPulseElectricField[E0, t + t1/2, \r\n      t0, \\[Omega]0, \\[Tau], \\[Phi]]\\ Conjugate[\r\n      gaussianPulseElectricField[E0, t - t1/2, \r\n        t0, \\[Omega]0, \\[Tau], \\[Phi]]\\ Exp[\r\n        I\\ w\\ t1]]\\) \\[DifferentialD]t1\\)\\);",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "E0 = 1;\r\nt0 = 0;\r\n\\[Omega]0 = 43000*cm2au;\r\n\\[Tau] = 20 fs2au;\r\n\\[Phi] = \\[Pi];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "GraphicsRow[{\r\n  Plot[gaussianPulseElectricField[E0, t, \r\n    t0, \\[Omega]0, \\[Tau], \\[Phi]], {t, -100*fs2au , 100 fs2au }, \r\n   PlotRange -> All, PlotTheme -> \"Scientific\", \r\n   FrameLabel -> {\"Time (a.u.)\", \"Intensity (a.u.)\"}], \r\n  Plot[Abs[FourierTransform[\r\n     gaussianPulseElectricField[E0, t, t0, \\[Omega]0, \\[Tau], \\[Phi]],\r\n      t, w]], {w, \\[Omega]0 - \\[Omega]0/2, \\[Omega]0 + \\[Omega]0/2}, \r\n   PlotRange -> All, PlotTheme -> \"Scientific\", \r\n   FrameLabel -> {\"Frequency (a.u.)\", \"Intensity (arb.units)\"}]}]\r\n   data=Table[{t/fs2au,gaussianPulseElectricField[E0, t, \r\n    t0, \\[Omega]0, \\[Tau], \\[Phi]]/vm2au}, {t, -100*fs2au , 100 fs2au,1 }];\r\n  Export[\"LaserTime.dat\",data,\"Table\"]\r\n  data=Table[{w/THz2au,Abs[FourierTransform[\r\n     gaussianPulseElectricField[E0, t, t0, \\[Omega]0, \\[Tau], \\[Phi]],\r\n      t, w]]}, {w, \\[Omega]0 - \\[Omega]0/2, \\[Omega]0 + \\[Omega]0/2, \\[Omega]0/200}];\r\n   Export[\"LaserFrequency.dat\",data,\"Table\"]",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Plot[funcitionBlackman[t, 5 \\[Tau]], {t, -5 \\[Tau]  , 5 \\[Tau]  }, \r\n PlotRange -> All, PlotTheme -> \"Scientific\", \r\n FrameLabel -> {\"Time (a.u.)\", \"Intensity (arb.units)\"}]\r\n EmitSound[Sound[SoundNote[\"A\"]]]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "DensityPlot[\r\n pulseSpectrogram[t, \\[Omega]], {t, -3 \\[Tau] , \r\n  3 \\[Tau] }, {\\[Omega], \\[Omega]0 - \\[Omega]0/\r\n    2, \\[Omega]0 + \\[Omega]0/2}, PlotRange -> All, \r\n PlotTheme -> \"Scientific\", GridLines -> None, \r\n PlotRangePadding -> Scaled[.01], ColorFunction -> \"Rainbow\", \r\n PlotLegends -> Placed[Automatic, Right], AspectRatio -> 3/4, \r\n FrameLabel -> {\"Time (a.u.)\", \"Frequency (a.u.)\"}]\r\nEmitSound[Sound[SoundNote[\"A\"]]]\r\n\r\nExport[\"PulseSptra.jpeg\", %]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Show[Plot[\r\n  gaussianPulseElectricField[E0, t, \r\n   t0, \\[Omega]0, \\[Tau], \\[Phi]], {t, -50 fs2au, 50 fs2au}, \r\n  PlotRange -> All, PlotStyle -> Red, PlotTheme -> \"Scientific\", \r\n  FrameLabel -> {\"Time (a.u.)\", \"Intensity (a.u.)\"}], \r\n Plot[E0 E^(-((4 Log[2] t^2)/\\[Tau]^2)), {t, -50 fs2au, 50 fs2au}, \r\n  PlotRange -> All, PlotTheme -> \"Scientific\", \r\n  PlotStyle -> {Dashed, Blue}, AspectRatio->3/4,\r\n  FrameLabel -> {\"Time (a.u.)\", \"Intensity (a.u.)\"}]]\r\nDensityPlot[\r\n Abs[eWigner[t, w]]^2, {t, -50 fs2au, 50 fs2au}, {w, 350 THz2au, \r\n  400 THz2au}, PlotRange -> All, PlotTheme -> \"Scientific\", \r\n GridLines -> None, PlotRangePadding -> Scaled[0.01], WorkingPrecision -> 60, \r\n ColorFunction -> \"Rainbow\", PlotLegends ->{Automatic,Right},AspectRatio->3/4, \r\n FrameLabel -> {\"Time (a.u.)\", \"Frequency (a.u.)\"}]\r\nEmitSound[Sound[SoundNote[\"A\"]]]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

@@ -1,0 +1,269 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9252,        261]
+NotebookOptionsPosition[      8515,        243]
+NotebookOutlinePosition[      8923,        259]
+CellTagsIndexPosition[      8880,        256]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+HCP electric field \[Epsilon](t)The electric fields used in our calculations \
+are picosecond far-infrared electromagnetic pulses experimentally generated \
+when illuminating a GaAs wafer, in the presence of a pulsed electric field \
+applied across the surface, by a Ti:sapphire laser (D. You, R.R. Jones, P.H. \
+Bucksbaum, D.R. Dykaar, Opt. Lett. 18, 290 (1993).)\
+\>", "Text",
+ CellChangeTimes->{{3.8624356545024805`*^9, 3.862435693414892*^9}, {
+  3.8625392037376685`*^9, 3.8625392103606434`*^9}, {3.862539266080644*^9, 
+  3.862539267283677*^9}},ExpressionUUID->"88b195af-7802-4b90-b372-\
+eb4fa6a68335"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"cm2au", "=", 
+   FractionBox["4.5554927", 
+    SuperscriptBox["10", "6"]]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"fs2au", "=", "41.341276"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"au2vm", "=", 
+   RowBox[{"5.142", " ", 
+    SuperscriptBox["10", "11"]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"au2kvcm", "=", 
+   RowBox[{
+    SuperscriptBox["10", "5"], " ", "au2vm"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Epsilon]", "[", "t_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Epsilon]", "0"], " ", 
+     SuperscriptBox[
+      RowBox[{"Sin", "[", 
+       FractionBox[
+        RowBox[{"\[Pi]", " ", "t"}], 
+        SubscriptBox["t", "p"]], "]"}], "2"], " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{
+       RowBox[{"t", " ", "\[Omega]"}], "+", "\[Phi]"}], "]"}]}], "/;", 
+    RowBox[{"0", "\[LessEqual]", "t", "\[LessEqual]", 
+     SubscriptBox["t", "p"]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Epsilon]", "[", "t_", "]"}], ":=", 
+   RowBox[{"0", "/;", 
+    RowBox[{"t", "<", "0"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Epsilon]", "[", "t_", "]"}], ":=", 
+   RowBox[{"0", "/;", 
+    RowBox[{"t", ">", 
+     SubscriptBox["t", "p"]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[Omega]", "=", 
+   RowBox[{"11", " ", "cm2au"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[Phi]", "=", "\[Pi]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["\[Epsilon]", "0"], "=", 
+   FractionBox["150", "au2vcm"]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["t", "p"], "=", 
+   RowBox[{"1000", " ", "fs2au"}]}], ";"}], "\n", 
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"\[Epsilon]", "[", "t", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", 
+     RowBox[{
+      RowBox[{"-", "1000"}], " ", "fs2au"}], ",", 
+     RowBox[{"2", " ", 
+      SubscriptBox["t", "p"]}]}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.862435700874359*^9, 3.862435767093958*^9}, {
+   3.862435851976123*^9, 3.8624360771522503`*^9}, {3.8624361214389687`*^9, 
+   3.862436121625967*^9}, {3.8625386236172514`*^9, 3.86253894542354*^9}, {
+   3.8625389932515397`*^9, 3.862539003736541*^9}, {3.86253903507531*^9, 
+   3.862539042898384*^9}, {3.86253908403253*^9, 3.8625391533947363`*^9}, {
+   3.862539326354678*^9, 3.862539350423259*^9}, 3.862539484729171*^9, {
+   3.8625395204823656`*^9, 3.862539582048366*^9}, {3.8625396133448815`*^9, 
+   3.862539655064915*^9}, {3.862539689223913*^9, 3.8625396894068804`*^9}, {
+   3.8625397636478553`*^9, 3.8625398122413683`*^9}, {3.8625418190275145`*^9, 
+   3.862541857005514*^9}, {3.8625419228298354`*^9, 3.862541968484726*^9}, {
+   3.863406805015314*^9, 
+   3.863406843942686*^9}},ExpressionUUID->"f51bacbc-5a36-407d-915f-\
+94b14acfbdd8"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.862542197747529*^9, 3.862542229128975*^9}, 
+   3.8634051998891335`*^9},ExpressionUUID->"15cd1888-e807-465e-8b6a-\
+f7ab809cba8a"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{
+  3.8634875645374775`*^9},ExpressionUUID->"81855965-b8a7-4b0e-9b3e-\
+49a1eb4d1b3c"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"cm2au", "=", 
+     FractionBox["4.5554927", 
+      SuperscriptBox["10", "6"]]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"fs2au", "=", "41.341276"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"au2vm", "=", 
+     RowBox[{"5.142", " ", 
+      SuperscriptBox["10", "11"]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"au2kvcm", "=", 
+     RowBox[{
+      SuperscriptBox["10", "5"], " ", "au2vm"}]}], ";", 
+    RowBox[{
+     RowBox[{"RampedEnvelope", "[", "t_", "]"}], ":=", 
+     RowBox[{"0", "/;", 
+      RowBox[{"t", "<", "t0"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RampedEnvelope", "[", "t_", "]"}], ":=", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"Sin", "[", 
+        FractionBox[
+         RowBox[{"\[Pi]", " ", 
+          RowBox[{"(", 
+           RowBox[{"t", "-", "t0"}], ")"}]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{"t1", "-", "t0"}], ")"}]}]], "]"}], "2"], "/;", 
+      RowBox[{"t0", "<", "t", "<", "t1"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RampedEnvelope", "[", "t_", "]"}], ":=", 
+     RowBox[{"1", "/;", 
+      RowBox[{"t1", "<", "t", "<", "t2"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RampedEnvelope", "[", "t_", "]"}], ":=", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"Sin", "[", 
+        FractionBox[
+         RowBox[{"\[Pi]", " ", 
+          RowBox[{"(", 
+           RowBox[{"t3", "-", "t"}], ")"}]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{"t3", "-", "t2"}], ")"}]}]], "]"}], "2"], "/;", 
+      RowBox[{"t2", "\[LessEqual]", "t", "\[LessEqual]", "t3"}]}]}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RampedEnvelope", "[", "t_", "]"}], ":=", 
+     RowBox[{"0", "/;", 
+      RowBox[{"t", ">", "t3"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"t0", "=", 
+     RowBox[{"50", " ", "fs2au"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"t1", "=", 
+     RowBox[{"100", " ", "fs2au"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"t2", "=", 
+     RowBox[{"100", " ", "fs2au"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"t3", "=", 
+     RowBox[{"300", " ", "fs2au"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"Pulse", "[", "t_", "]"}], ":=", 
+    RowBox[{"Cos", "[", 
+     RowBox[{
+      RowBox[{"\[Omega]", " ", "t"}], "+", "\[Phi]"}], "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{"\[Omega]", "=", 
+     RowBox[{"36", " ", "cm2au"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"\[Phi]", "=", "0"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"E0", "=", 
+     FractionBox[
+      RowBox[{"2", " ", 
+       SuperscriptBox["10", "7"]}], "au2vm"]}], ";"}], "\n", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"E0", " ", 
+        RowBox[{"RampedEnvelope", "[", "t", "]"}]}], ",", 
+       RowBox[{"E0", " ", 
+        RowBox[{"RampedEnvelope", "[", "t", "]"}], " ", 
+        RowBox[{"Pulse", "[", "t", "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", 
+       RowBox[{"500", " ", "fs2au"}]}], "}"}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Dashed", ",", "Black"}], "}"}]}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"PlotLabels", "\[Rule]", 
+      RowBox[{"Placed", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"\"\<Envelope\>\"", ",", "\"\<Electric Field\>\""}], "}"}], 
+        ",", "Top"}], "]"}]}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Time (a.u.)\>\"", ",", "\"\<Intensity (a.u.)\>\""}], 
+       "}"}]}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.8634049251987667`*^9, 3.8634052600642424`*^9}, {
+   3.8634052973414803`*^9, 3.863405302408927*^9}, {3.8634053418685584`*^9, 
+   3.8634055240401163`*^9}, {3.8634055616297684`*^9, 
+   3.8634056086929426`*^9}, {3.86340564965044*^9, 3.8634057586673203`*^9}, {
+   3.863405838165947*^9, 3.8634059249276*^9}, {3.8634060704401217`*^9, 
+   3.8634062803259897`*^9}, {3.863406446272699*^9, 3.8634065156958165`*^9}, 
+   3.863406848617818*^9, {3.8634875669057555`*^9, 3.86348756736001*^9}},
+ CellLabel->"In[36]:=",ExpressionUUID->"c847b50e-9b63-49c6-92f0-4f1a75e9f9e9"]
+},
+WindowSize->{644.25, 503.25},
+WindowMargins->{{Automatic, -4.5}, {Automatic, 0}},
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (February 5, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"84f2e29d-8f19-493c-a88f-d68afc974580"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 615, 10, 127, "Text",ExpressionUUID->"88b195af-7802-4b90-b372-eb4fa6a68335"],
+Cell[1176, 32, 2724, 76, 306, "Input",ExpressionUUID->"f51bacbc-5a36-407d-915f-94b14acfbdd8"],
+Cell[3903, 110, 177, 3, 28, "Input",ExpressionUUID->"15cd1888-e807-465e-8b6a-f7ab809cba8a"],
+Cell[4083, 115, 130, 3, 28, "Input",ExpressionUUID->"81855965-b8a7-4b0e-9b3e-49a1eb4d1b3c"],
+Cell[4216, 120, 4295, 121, 499, "Input",ExpressionUUID->"c847b50e-9b63-49c6-92f0-4f1a75e9f9e9"]
+}
+]
+*)
+

@@ -1,0 +1,196 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7629,        186]
+NotebookOptionsPosition[      6756,        166]
+NotebookOutlinePosition[      7208,        183]
+CellTagsIndexPosition[      7165,        180]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "\"\<D:\\\\DataOfPro\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"Import", "[", "\"\<LaserField.dat\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", 
+        RowBox[{"1", ";;", 
+         RowBox[{"i", "+", "1"}], ";;", "i"}]}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "2"}], "}"}]}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"GridLines", "\[Rule]", "None"}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", "Black"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Time (fs)\>\"", ",", 
+      "\"\<\!\(\*StyleBox[\"E\",FontSlant->\"Italic\"]\)(\!\(\*StyleBox[\"t\",\
+FontSlant->\"Italic\"]\)) (a.u.)\>\""}], "}"}]}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"500", ",", "314"}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8674047987592883`*^9, 3.867404912652566*^9}, {
+  3.8674050385427084`*^9, 3.867405177522577*^9}, {3.8674053219027367`*^9, 
+  3.8674053498637457`*^9}, {3.8674054076930714`*^9, 3.867405410525544*^9}, {
+  3.8674058163625402`*^9, 3.867405841352497*^9}, {3.86740594495367*^9, 
+  3.867405945353572*^9}, {3.86740604144362*^9, 3.8674060528424997`*^9}, {
+  3.867406085573742*^9, 3.8674060953023767`*^9}},
+ CellLabel->"In[78]:=",ExpressionUUID->"6d9b02b4-296b-4409-a80f-10c953cc00a7"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<LaserTimeVSIntensity.jpeg\>\"", ",", "%"}], "]"}]], "Input",
+ CellChangeTimes->{{3.867405865244043*^9, 3.867405920753636*^9}},
+ CellLabel->"In[51]:=",ExpressionUUID->"7bd9fb23-8aa9-4ad2-be34-10ab0bd9aedb"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"Import", "[", "\"\<laser_fre1.dat\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", 
+        RowBox[{"1", ";;", 
+         RowBox[{"i", "+", "1"}], ";;", "i"}]}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "1"}], "}"}]}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"GridLines", "\[Rule]", "None"}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", "Black"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Frequency (a.u.)\>\"", ",", "\"\<Intensity (arb.units)\>\""}], 
+     "}"}]}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"500", ",", "314"}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.867405279563436*^9, 3.8674053135966225`*^9}, {
+  3.867405358712675*^9, 3.8674054001122*^9}, {3.8674059862725163`*^9, 
+  3.8674059903725023`*^9}, {3.867406101173822*^9, 3.867406120463806*^9}},
+ CellLabel->"In[81]:=",ExpressionUUID->"06fa264d-ec6e-46df-92ac-f95c0750f070"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<LaserFrequencyVSIntensity.jpeg\>\"", ",", "%"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.8674061339935265`*^9, 3.867406147833887*^9}},
+ CellLabel->"In[67]:=",ExpressionUUID->"d5e2d80b-d2cf-4e90-a668-1cfbdebc7668"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"Import", "[", "\"\<TimeFrequencyDistribution.dat\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListDensityPlot", "[", 
+  RowBox[{
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", 
+      RowBox[{"1", ";;", "3", ";;", "1"}]}], "]"}], "]"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"ColorFunction", "\[Rule]", 
+    RowBox[{"ColorData", "[", "\"\<TemperatureMap\>\"", "]"}]}], 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Time (fs)\>\"", ",", "\"\<Frequency (a.u.)\>\""}], "}"}]}], 
+   ",", 
+   RowBox[{"ImageSize", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"500", ",", "314"}], "}"}]}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "0.628"}], ",", 
+   RowBox[{"PlotRangePadding", "\[Rule]", "0"}], ",", 
+   RowBox[{"FrameStyle", "\[Rule]", 
+    RowBox[{"Directive", "[", 
+     RowBox[{"Black", ",", "12"}], "]"}]}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"11", ",", "90"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0.11", ",", "0.32"}], "}"}], ",", "All"}], "}"}]}]}], 
+  "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.867408049733614*^9, 3.867408231189457*^9}, {
+   3.867408322168322*^9, 3.8674083800191545`*^9}, {3.867408440149391*^9, 
+   3.8674086417097826`*^9}, {3.8674086797292175`*^9, 3.867408703289616*^9}, {
+   3.867408753469499*^9, 3.867408755828679*^9}, {3.8674087914793777`*^9, 
+   3.867408796887594*^9}, {3.8674088590192585`*^9, 3.867408863468256*^9}, {
+   3.8674088971799994`*^9, 3.8674089132491274`*^9}, {3.867408954297943*^9, 
+   3.8674091549892626`*^9}, {3.86740921014788*^9, 3.867409218078512*^9}, {
+   3.8674092794888067`*^9, 3.8674093878172708`*^9}, {3.8674094325285172`*^9, 
+   3.8674094587979746`*^9}, {3.867409527518153*^9, 3.8674095537901497`*^9}, {
+   3.8674096483596783`*^9, 3.8674097637992973`*^9}, {3.8674097971100845`*^9, 
+   3.867409836409655*^9}, {3.8674098919079695`*^9, 3.8674099126294727`*^9}, {
+   3.8674101673893166`*^9, 3.8674101721400356`*^9}, 3.867410245329679*^9},
+ CellLabel->
+  "In[170]:=",ExpressionUUID->"0e6dfb42-2ab3-4177-a1ad-9a577076a1c0"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<TFD.jpeg\>\"", ",", "%", ",", 
+   RowBox[{"ImageResolution", "\[Rule]", "1200"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8674099351528864`*^9, 3.8674099607279797`*^9}, {
+  3.867410136209914*^9, 3.8674101583582315`*^9}, {3.867410309459901*^9, 
+  3.867410311188002*^9}, {3.867410390528346*^9, 3.8674104694178753`*^9}},
+ CellLabel->
+  "In[172]:=",ExpressionUUID->"477c0a0b-b33b-4cf0-9924-01899c0ace9d"]
+},
+WindowSize->{766.8, 609.6},
+WindowMargins->{{Automatic, -4.7999999999999545`}, {Automatic, 0}},
+Magnification:>1.3 Inherited,
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (February 5, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"6e00b674-cd02-4a5c-82e7-8970e0f31819"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1655, 38, 161, "Input",ExpressionUUID->"6d9b02b4-296b-4409-a80f-10c953cc00a7"],
+Cell[2216, 60, 259, 4, 36, "Input",ExpressionUUID->"7bd9fb23-8aa9-4ad2-be34-10ab0bd9aedb"],
+Cell[2478, 66, 1269, 31, 162, "Input",ExpressionUUID->"06fa264d-ec6e-46df-92ac-f95c0750f070"],
+Cell[3750, 99, 269, 5, 36, "Input",ExpressionUUID->"d5e2d80b-d2cf-4e90-a668-1cfbdebc7668"],
+Cell[4022, 106, 2272, 48, 210, "Input",ExpressionUUID->"0e6dfb42-2ab3-4177-a1ad-9a577076a1c0"],
+Cell[6297, 156, 455, 8, 36, "Input",ExpressionUUID->"477c0a0b-b33b-4cf0-9924-01899c0ace9d"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

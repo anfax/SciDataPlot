@@ -1,0 +1,68 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "ClearAll[\"Global`*\"]\r\nSetDirectory[\"D:\\\\\"];\r\nvm2au = 1.944686937090702/10^12;\r\nfs2au = 41.3412760;\r\ncm2au = 4.5554927/10^6;\r\nHz2au = 1.519836862300743/10^16;\r\nTHz2au = 1.519836862300743/10^4;\r\n\r\ngaussianPulseElectricField[E0_,t_,t0_, w_, tau_, p_] := \r\nE0 E^(-((4 Log[2] (t-t0)^2)/tau^2)) Cos[w (t - t0) + p];\r\nTraditionalForm[\r\n Subscript[E, 0] E^(-((4 Log[2] t^2)/\\[Tau]^2))\r\n   Cos[\\[Omega] (t - Subscript[t, 0]) + \\[Phi]]]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "e1=2*10^7 vm2au;\r\ne2=9*10^10 vm2au;\r\ne3=3*10^11 vm2au;\r\nw1=36 *cm2au;\r\nw2=29265.00000000*cm2au;\r\nw3=43000.00000000*cm2au;\r\ntc1=500.00000000*fs2au;\r\ntc2=840.00000000*fs2au;\r\ntc3=850.00000000*fs2au;\r\nta1=279.00000000*fs2au;\r\nta2=10.00000000*fs2au;\r\nta3=10.00000000*fs2au;\r\np1=0.00000000*Pi;\r\np2=0.00000000*Pi;\r\np3=0.00000000*Pi;",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "totalPulse[t_]:=gaussianPulseElectricField[e1,t,tc1,w1,ta1,p1]+gaussianPulseElectricField[e2,t,tc2,w2,ta2,p2]+gaussianPulseElectricField[e3,t,tc3,w3,ta3,p3]\r\nPlot[totalPulse[t],{t,0,1000*fs2au}]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Plot[Abs[FourierTransform[gaussianPulseElectricField[e1,t,tc1,w1,ta1,p1]+gaussianPulseElectricField[e2,t,tc2,w2,ta2,p2]+gaussianPulseElectricField[e3,t,tc3,w3,ta3,p3],t, w]], {w, w1-w1/2, w3+w3/2}, \r\n PlotRange -> All, PlotTheme -> \"Scientific\", \r\n FrameLabel -> {\"Frequency (a.u.)\", \"Intensity (arb.units)\"}]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "funcitionBlackman[t_, tau_] := \r\n  Piecewise[{{0.50 Cos[(2 \\[Pi] t)/tau] + 0.08 Cos[(4 \\[Pi] t)/tau] + \r\n      0.42, -(tau/2) <= t <= tau/2}, {0, t < -(tau/2)}, {0, \r\n     t > tau/2}}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "pulseSpectrogram[t_, w_] := Abs[\\!\\(\r\n\\*SubsuperscriptBox[\\(\\[Integral]\\), \\(t - 10\\ \\[Tau]\\), \\(t + \r\n      10  \\[Tau]\\)]\\(gaussianPulseElectricField[e1, t1, \r\n      t0, w1, ta1, p1]\\ funcitionBlackman[t1 - t, \r\n      5  ta1] Exp[I w t1] \\[DifferentialD]t1\\)\\)]^2;",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "DensityPlot[\r\n pulseSpectrogram[t, \\[Omega]], {t, -3 ta1 , \r\n  3ta1 }, {w, w1 -w1/\r\n    2, w1 + w1/2}, PlotRange -> All, \r\n PlotTheme -> \"Scientific\", GridLines -> None, \r\n PlotRangePadding -> Scaled[.01], ColorFunction -> \"Rainbow\", \r\n PlotLegends -> Placed[Automatic, Right], AspectRatio -> 3/4, \r\n FrameLabel -> {\"Time (a.u.)\", \"Frequency (a.u.)\"}]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

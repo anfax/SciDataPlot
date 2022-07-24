@@ -1,0 +1,355 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12738,        347]
+NotebookOptionsPosition[     12112,        326]
+NotebookOutlinePosition[     12527,        343]
+CellTagsIndexPosition[     12484,        340]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"population", "=", 
+   RowBox[{"6", " ", 
+    SuperscriptBox["10", "6"]}]}], ";", 
+  RowBox[{"unity", "=", "10"}], ";", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"unity", "\[GreaterEqual]", "2"}], ",", 
+    RowBox[{"tplus", "=", "1"}], ",", 
+    RowBox[{"tplus", "=", "0"}]}], "]"}], ";", 
+  RowBox[{"ttest", "=", "1.5"}], ";", 
+  RowBox[{"Array", "[", 
+   RowBox[{"s", ",", "population"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NumberOfSamples", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"n", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"set", "=", "0"}], ",", 
+    RowBox[{"n", "<", "population"}], ",", 
+    RowBox[{
+     RowBox[{"group", "=", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "50000"}], "}"}], "]"}]}], ";", 
+     RowBox[{"n", "=", 
+      RowBox[{"n", "+", "group"}]}], ";", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"n", ">", "population"}], ",", 
+       RowBox[{
+        RowBox[{"n", "=", 
+         RowBox[{"n", "-", "group"}]}], ";", 
+        RowBox[{"group", "=", 
+         RowBox[{"population", "-", "n"}]}]}], ",", 
+       RowBox[{"n", "=", "n"}]}], "]"}], ";", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"IntegerQ", "[", 
+        FractionBox["group", "unity"], "]"}], ",", 
+       RowBox[{"set", "=", 
+        RowBox[{"IntegerPart", "[", 
+         FractionBox["group", "unity"], "]"}]}], ",", 
+       RowBox[{"set", "=", 
+        RowBox[{
+         RowBox[{"IntegerPart", "[", 
+          FractionBox["group", "unity"], "]"}], "+", "1"}]}]}], "]"}], ";", 
+     RowBox[{"NumberOfSamples", "=", 
+      RowBox[{"NumberOfSamples", "+", "set"}]}]}]}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{
+   "\"\< \:603b\:91c7\:96c6\:4eba\:6570 = \>\"", ",", "n", ",", 
+    "\"\< \:603b\:6837\:54c1\:6570 = \>\"", ",", "NumberOfSamples"}], "]"}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"sets", "=", "78000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"IntegerQ", "[", 
+     FractionBox["NumberOfSamples", "sets"], "]"}], ",", 
+    RowBox[{"m", "=", 
+     FractionBox["NumberOfSamples", "sets"]}], ",", 
+    RowBox[{
+     RowBox[{"m", "=", 
+      RowBox[{
+       RowBox[{"IntegerPart", "[", 
+        FractionBox["NumberOfSamples", "sets"], "]"}], "+", "1"}]}], ";", 
+     RowBox[{"les", "=", 
+      RowBox[{"NumberOfSamples", "-", 
+       RowBox[{"m", " ", "sets"}]}]}]}]}], "]"}], ";"}], "\n", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Array", "[", 
+        RowBox[{"data1", ",", "ntest"}], "]"}], ";", 
+       RowBox[{"Array", "[", 
+        RowBox[{"data2", ",", "ntest"}], "]"}], ";", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"s", "[", "i", "]"}], "=", "0"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "NumberOfSamples"}], "}"}]}], "]"}], 
+       ";", 
+       RowBox[{"a", "=", 
+        RowBox[{"RandomInteger", "[", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "NumberOfSamples"}], "}"}], "]"}]}], ";", 
+       RowBox[{
+        RowBox[{"s", "[", "a", "]"}], "=", "1"}], ";", 
+       RowBox[{"it", "=", "0"}], ";", 
+       RowBox[{"tim", "=", "0"}], ";", 
+       RowBox[{"sign", "=", "0"}], ";", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"j", "=", "1"}], ";", 
+          RowBox[{"imin", "=", "1"}], ";", 
+          RowBox[{"imax", "=", "sets"}]}], ",", 
+         RowBox[{"sign", "<", "1"}], ",", 
+         RowBox[{
+          RowBox[{"sign", "=", 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"i", "=", "imin"}], "imax"], 
+            RowBox[{"s", "[", "i", "]"}]}]}], ";", 
+          RowBox[{"tim", "=", 
+           RowBox[{"tim", "+", 
+            FractionBox[
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"imax", "-", "imin", "+", "1"}], ")"}], " ", "0"}], 
+             "36000"], "+", "ttest"}]}], ";", 
+          RowBox[{"it", "=", 
+           RowBox[{"it", "+", "1"}]}], ";", 
+          RowBox[{"imin", "=", 
+           RowBox[{
+            RowBox[{"j", " ", "sets"}], "+", "1"}]}], ";", 
+          RowBox[{"imax", "=", 
+           RowBox[{
+            RowBox[{"j", " ", "sets"}], "+", "sets"}]}], ";", 
+          RowBox[{"j", "=", 
+           RowBox[{"j", "+", "1"}]}]}]}], "]"}], ";", 
+       RowBox[{
+        RowBox[{"data1", "[", "ii", "]"}], "=", 
+        RowBox[{"it", "+", "tplus"}]}], ";", 
+       RowBox[{
+        RowBox[{"data2", "[", "ii", "]"}], "=", 
+        RowBox[{"tim", "+", 
+         RowBox[{"tplus", " ", "ttest"}]}]}], ";", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"ii", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"data1", "[", "ii", "]"}], "]"}], ",", 
+          RowBox[{"data2", "[", "ii", "]"}]}], "}"}], ">>>", 
+        "\"\<F:\\\\DataForRandomTest.txt\>\""}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"ii", ",", "1", ",", "ntest"}], "}"}]}], "]"}], ";", 
+    RowBox[{"PutAppend", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\"\< Population = \>\"", ",", "population"}], "}"}], ",", 
+      RowBox[{"{", "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\< Max and Min of E = \>\"", ",", 
+        RowBox[{"Max", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"data1", "[", "i", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}], 
+        ",", "\"\< ; \>\"", ",", 
+        RowBox[{"Min", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"data1", "[", "i", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}]}], 
+       "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\< Mean of E and time = \>\"", ",", 
+        RowBox[{"N", "[", 
+         RowBox[{"Mean", "[", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"data1", "[", "i", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}], 
+         "]"}], ",", "\"\< ; \>\"", ",", 
+        RowBox[{"Mean", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"data2", "[", "i", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}]}], 
+       "}"}], ",", "\"\<F:\\\\DataForRandomTest.txt\>\""}], "]"}], ";", 
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "ntest", ",", "\"\< Population = \>\"", ",", "population", ",", 
+      "\"\< Max and Min of E = \>\"", ",", 
+      RowBox[{"Max", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"data1", "[", "i", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}], ",", 
+      "\"\< ; \>\"", ",", 
+      RowBox[{"Min", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"data1", "[", "i", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}], ",", 
+      "\"\< Mean of E and time = \>\"", ",", 
+      RowBox[{"N", "[", 
+       RowBox[{"Mean", "[", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"data1", "[", "i", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}], 
+       "]"}], ",", "\"\< ; \>\"", ",", 
+      RowBox[{"Mean", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"data2", "[", "i", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}]}], 
+     "]"}], ";", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ntest", ",", 
+       RowBox[{"Max", "[", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"data1", "[", "i", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}], ",", 
+       RowBox[{"Min", "[", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"data1", "[", "i", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}], ",", 
+       RowBox[{"N", "[", 
+        RowBox[{"Mean", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"data1", "[", "i", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", "ntest"}], "}"}]}], "]"}], "]"}], 
+        "]"}]}], "}"}], ">>>", "\"\<F:\\\\DataOfCycleTest.txt\>\""}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"ntest", ",", "250", ",", "250"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8605521642212114`*^9, 3.860552200409589*^9}, {
+   3.860552320625961*^9, 3.8605526393049254`*^9}, 3.8605527152816286`*^9, {
+   3.8605529086429663`*^9, 3.860553042884325*^9}, {3.860553093483675*^9, 
+   3.860553099154519*^9}, {3.86055315000536*^9, 3.860553189398383*^9}, {
+   3.8605532679793973`*^9, 3.860553280851344*^9}, {3.860553310868186*^9, 
+   3.8605533837737894`*^9}, {3.860553483767397*^9, 3.860553538716704*^9}, {
+   3.860553596985771*^9, 3.860553672635765*^9}, {3.8605537026909227`*^9, 
+   3.8605537392488375`*^9}, {3.860553770131851*^9, 3.8605539016515856`*^9}, {
+   3.86055397040096*^9, 3.8605540439818864`*^9}, {3.8605540854742775`*^9, 
+   3.860554122434642*^9}, {3.8605542292683043`*^9, 3.860554259898852*^9}, {
+   3.8605543835404997`*^9, 3.8605544421191883`*^9}, {3.860554548998666*^9, 
+   3.860554550545221*^9}, 3.8605557698178816`*^9, {3.8605558152502866`*^9, 
+   3.8605559873081465`*^9}, {3.860556119125646*^9, 3.860556165701347*^9}, {
+   3.8605561999122963`*^9, 3.8605562163787475`*^9}, 3.86055632889707*^9, {
+   3.8605567441720133`*^9, 3.860556746552107*^9}, 3.86056151873845*^9},
+ CellLabel->
+  "In[106]:=",ExpressionUUID->"a77c15b6-6e10-45d9-89f9-f1714113d4b1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\" \:603b\:91c7\:96c6\:4eba\:6570 = \"\>", "\[InvisibleSpace]", 
+   "6000000", "\[InvisibleSpace]", "\<\" \:603b\:6837\:54c1\:6570 = \"\>", 
+   "\[InvisibleSpace]", "639857"}],
+  SequenceForm[
+  " \:603b\:91c7\:96c6\:4eba\:6570 = ", 6000000, 
+   " \:603b\:6837\:54c1\:6570 = ", 639857],
+  Editable->False]], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.8605541422108355`*^9, 3.860554455350005*^9, 3.860554559079652*^9, 
+   3.8605559974304028`*^9, 3.860556222814726*^9, 3.8605567541744924`*^9, {
+   3.8605614253863297`*^9, 
+   3.860561427698284*^9}},ExpressionUUID->"25cfb442-eabd-46fd-92a1-\
+cae4668a3224"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "250", "\[InvisibleSpace]", "\<\" Population = \"\>", "\[InvisibleSpace]", 
+   "6000000", "\[InvisibleSpace]", "\<\" Max and Min of E = \"\>", 
+   "\[InvisibleSpace]", "10", "\[InvisibleSpace]", "\<\" ; \"\>", 
+   "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\" Mean of E and time = \"\>", "\[InvisibleSpace]",
+    "5.572`", "\[InvisibleSpace]", "\<\" ; \"\>", "\[InvisibleSpace]", 
+   "8.358`"}],
+  SequenceForm[
+  250, " Population = ", 6000000, " Max and Min of E = ", 10, " ; ", 2, 
+   " Mean of E and time = ", 5.572, " ; ", 8.358],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8605541422108355`*^9, 3.860554455350005*^9, 
+  3.860554559079652*^9, 3.8605559974304028`*^9, 3.860556222814726*^9, 
+  3.8605570416517897`*^9},
+ CellLabel->
+  "\:6b63\:5728\:8ba1\:7b97In[106]:=",ExpressionUUID->"dea0037a-a78d-4a57-\
+b821-ff5061752c95"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{960, 508},
+WindowMargins->{{-5.5, Automatic}, {Automatic, -5.5}},
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (2021\:5e742\:67085\
+\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"59905765-bbcd-41dc-8158-158e4cd57a2f"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 9889, 259, 1292, "Input",ExpressionUUID->"a77c15b6-6e10-45d9-89f9-f1714113d4b1"],
+Cell[CellGroupData[{
+Cell[10494, 285, 691, 16, 22, "Print",ExpressionUUID->"25cfb442-eabd-46fd-92a1-cae4668a3224"],
+Cell[11188, 303, 896, 19, 22, "Print",ExpressionUUID->"dea0037a-a78d-4a57-b821-ff5061752c95"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,20 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "(*Set work directory*)\r\nSetDirectory[\"F:\\\\doc\\\\OneDimIonCenPots\\\\\"];\r\npumprange = {0.0, 150};\r\nproberange = {0.0, 200};\r\nionrange = {0, 200};\r\n{ListLinePlot[Import[\"absb.dat\"], AspectRatio -> 3/5, \r\n  PlotTheme -> \"Scientific\", PlotRange -> All],\r\n (*Plot laser*)\r\n ListLinePlot[\r\n  Table[Import[\"laser.dat\"][[All, 1 ;; 1 + i ;; i]], {i, 1, \r\n    3}],(*InterpolationOrder\\[Rule]3,*)PlotTheme -> \"Scientific\", Interpolation->5,\r\n  PlotRange -> {{0.0, 0.05}, {Automatic, Automatic}},PlotStyle -> {{Black, Thickness[0.001]}, {Red, \r\n     Thickness[0.001]}, {Blue, Thickness[0.001]}}, ImageSize -> {500,300},\r\n   AspectRatio -> 3/5, PlotTheme -> \"Scientific\", \r\n  PlotLabels -> Placed[{\"1\", \"2\", \"3\"}, Bottom]],\r\n (*Plot potentional*)\r\n ListLinePlot[\r\n  Table[Import[\"pott.dat\"][[All, 1 ;; i + 1 ;; i]], {i, 1, 3}], \r\n  PlotRange -> {Automatic, All}, PlotMarkers -> None,ImageSize -> {500,300},\r\n   AspectRatio -> 0.7, \r\n  PlotLabel -> \"Population of States\", \r\n  FrameLabel -> {\"Time(ps)\", \"Population\"}, PlotTheme -> \"Scientific\",\r\n    \r\n  PlotStyle -> {{Black, Thickness[0.003]}, {Dashed, \r\n     Thickness[0.003]}, {DotDashed, Thickness[0.003]}}, \r\n  FrameTicks -> Automatic, \r\n  PlotLegends -> \r\n   Placed[LineLegend[{\"vgr\", \"exc\", \r\n      \"ion\"},(*LegendFunction\\[Rule](Framed[#,RoundingRadius\\[Rule]1,\r\n     FrameStyle\\[Rule]LightGray]&),*)LegendLayout -> \"Column\"], \r\n    Scaled[{0.80, 0.80}]]],\r\n (*Plot radiss-resvoled wavefuction of states*)\r\n ListContourPlot[Import[\"vgr_rad.dat\"],(*AspectRatio\\[Rule]0.75,*)\r\n  Frame -> True, FrameTicksStyle -> 12, Mesh -> None, \r\n  PlotRange -> {ionrange, All, All},  ImageSize -> {500,300},\r\n  PlotLegends -> Placed[ Automatic, Right], Contours -> 150, \r\n  ContourStyle -> None], \r\n ListContourPlot[Import[\"exc_rad.dat\", \"Table\"], \r\n  PlotTheme -> \"Scientific\", PlotRange -> {ionrange, All, All},  ImageSize -> {500,300},\r\n  PlotLegends -> Placed[ Automatic, Right], AspectRatio -> 3/5, \r\n  Mesh -> None, Contours -> 150, ContourStyle -> None], \r\n ListContourPlot[Import[\"ion_rad.dat\", \"Table\"],  ImageSize -> {500,300},\r\n  PlotTheme -> \"Scientific\", PlotRange -> {ionrange, All, All}, \r\n  PlotLegends -> Placed[ Automatic, Right], AspectRatio -> 3/5, \r\n  Mesh -> None, Contours -> 150, ContourStyle -> None], \r\n ListContourPlot[Import[\"totalraddis.dat\"],(*AspectRatio\\[Rule]0.75,*)\r\n  Frame -> True, FrameTicksStyle -> 12, Mesh -> None, \r\n  PlotRange -> {ionrange, All, All},  ImageSize -> {500,300},\r\n  PlotLegends -> Placed[ Automatic, Right], Contours -> 150, \r\n  ContourStyle -> None],(*Plot the population of states*)\r\n ListLinePlot[\r\n  Table[Import[\"popu.dat\"][[All, 1 ;; i + 1 ;; i]], {i, 1, 3}], \r\n  PlotRange -> {ionrange, All}, PlotMarkers -> None,  ImageSize -> {500,300},\r\n   AspectRatio -> 0.7, PlotLabel -> \"Population of States\", \r\n  FrameLabel -> {\"Time(ps)\", \"Population\"}, PlotTheme -> \"Scientific\",\r\n    \r\n  PlotStyle -> {{Black, Thickness[0.003]}, {Red, \r\n     Thickness[0.003]}, {Blue, Thickness[0.003]}}, \r\n  FrameTicks -> Automatic, \r\n  PlotLegends -> \r\n   Placed[LineLegend[{\"vgr\", \"exc\", \r\n      \"ion\"},(*LegendFunction\\[Rule](Framed[#,RoundingRadius\\[Rule]1,\r\n     FrameStyle\\[Rule]LightGray]&),*)LegendLayout -> \"Column\"], \r\n    Scaled[{0.80, 0.80}]]]}\r\n",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "\r\n SetDirectory[\"D:\\\\doc\\\\data\\\\ion1testold\\\\PreAlign\\\\2100\" ];\r\n",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": " Do[If[FileExistsQ[\r\n    \"F%3A%5Cdataofion1%5Cwave%5Cwave_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n   CopyFile[\"F%3A%5Cdataofion1%5Cwave%5Cwave_at_pos\" <> ToString[i] <> \"_fs.dat\", \r\n    \"wave\\\\wave_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 20000, 1}]",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\n\r\n Do[If[FileExistsQ[\r\n    \"F%3A%5Cdataofion1%5Cp_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n   CopyFile[\"F%3A%5Cdataofion1%5Cp_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\", \r\n    \"p_vgr_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 5000, 1}]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": " Do[If[FileExistsQ[\r\n    \"F%3A%5Cdataofion1%5Cp_exc_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n   CopyFile[\"F%3A%5Cdataofion1%5Cp_exc_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\", \r\n    \"p_exc_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 5000, 1}]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": " Do[If[FileExistsQ[\r\n   \"F%3A%5Cdataofion1%5Cwave%5Cwave_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n  DeleteFile[\"F%3A%5Cdataofion1%5Cwave%5Cwave_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 20000, 1}]\r\n\r\n Do[If[FileExistsQ[\r\n    \"F%3A%5Cdataofion1%5Cp_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n  DeleteFile[\"F%3A%5Cdataofion1%5Cp_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 20000, 1}]\r\n    Do[If[FileExistsQ[\r\n    \"F%3A%5Cdataofion1%5Cp_exc_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n  DeleteFile[\"F%3A%5Cdataofion1%5Cp_exc_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 20000, 1}]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "renameFile[fileName_]:=If[FileExistsQ[\r\n    \"F%3A%5Cdataofion1%5C\"<>fileName<>\".dat\"],\r\n   CopyFile[\"F%3A%5Cdataofion1%5C\"<>fileName<>\".dat\", \r\n    fileName<>\".dat\"];DeleteFile[\"F%3A%5Cdataofion1%5C\"<>fileName<>\".dat\"]]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "renameFile[\"alog\"];\r\nrenameFile[\"absb\"];\r\nrenameFile[\"ang_dis1\"];\r\nrenameFile[\"ang_dt\"];\r\nrenameFile[\"beta\"];\r\nrenameFile[\"cos1\"];\r\nrenameFile[\"dipole\"];\r\nrenameFile[\"eig\"];\r\nrenameFile[\"exc_ang\"];\r\nrenameFile[\"exc_rad\"];\r\nrenameFile[\"ion_ang\"];\r\nrenameFile[\"ion_rad\"];\r\nrenameFile[\"ion_t1\"];\r\nrenameFile[\"ion_t2\"];\r\nrenameFile[\"ion_t3\"];\r\nrenameFile[\"laser\"];\r\nrenameFile[\"lengdre\"];\r\nrenameFile[\"ori_ali_1\"];\r\nrenameFile[\"ori_ali_2\"];\r\nrenameFile[\"ori_ali_made\"];\r\nrenameFile[\"p_exc_v\"];\r\nrenameFile[\"p_vgr_v\"];\r\nrenameFile[\"parameters\"];\r\nrenameFile[\"PopOfStates\"];\r\nrenameFile[\"popu\"];\r\nrenameFile[\"pott\"];\r\nrenameFile[\"qua_int_ang\"];\r\nrenameFile[\"qua_int_rad\"];\r\nrenameFile[\"rad_dt\"];\r\nrenameFile[\"T1_POP_V\"];\r\nrenameFile[\"T2_POP_V\"];\r\nrenameFile[\"timeenergyspctra\"];\r\nrenameFile[\"totalangdis\"];\r\nrenameFile[\"totalraddis\"];\r\nrenameFile[\"vgr_ang\"];\r\nrenameFile[\"vgr_rad\"];\r\nrenameFile[\"WavAngDisRat\"];\r\nrenameFile[\"wave2d\"];\r\nrenameFile[\"weight\"]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "e[E0_, t_, t0_, \\[Omega]_, \\[Tau]_, \\[Phi]_] := E0 E^(-((4 Log[2] ((t - t0)^2) )/\\[Tau]^2))*Cos[\\[Omega] (t - t0) + \\[Phi]];\r\nE0 = 3.77*10^(-002);\r\nt0 = 0;\r\n\\[Omega] = 0.11;\r\n\\[Tau] = 413.42;\r\n\\[Phi] = 0;\r\nPlot[e[E0, t, t0, \\[Omega], \\[Tau], \\[Phi]], {t, -1000, 1653.654}, \r\n PlotRange -> All, PlotTheme -> \"Scientific\", \r\n PlotLabel -> \"Laser pulse\", \r\n PlotLegends -> \r\n  Placed[{\"\\!\\(\\*SubscriptBox[\\(E\\), \\(0\\)]\\) \\!\\(\\*SuperscriptBox[\\(\\\r\n\\[ExponentialE]\\), \\(-\\*FractionBox[\\(\\(4\\)\\(\\\\\\ \\)\\(ln\\)\\(\\\\\\ \\\r\n\\)\\(2\\)\\(\\\\\\ \\)\\*SuperscriptBox[\\((t - \\*SubscriptBox[\\(t\\), \\\r\n\\(0\\)])\\), \\(2\\)]\\(\\\\\\ \\)\\), SuperscriptBox[\\(\\[Tau]\\), \\\r\n\\(2\\)]]\\)]\\)cos(\\!\\(\\*SubscriptBox[\\(\\[Omega]\\), \\(0\\)]\\) \\\r\n(t-\\!\\(\\*SubscriptBox[\\(t\\), \\(0\\)]\\))+\\[Phi])\"}, Scaled[{0.7, 0.8}]],\r\n  FrameLabel -> {\"Time (a.u.)\", \"Intensity (a.u.)\"}]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

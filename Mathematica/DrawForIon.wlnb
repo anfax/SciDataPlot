@@ -1,0 +1,201 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "Clear[\"Global`*\"];\r\ndir = FileNames[All, \"F:\\\\doc\\\\iontestold\\\\840fs\"]\r\n",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nSetDirectory[dir[[9]]];\r\nPrint[Directory[]]\r\n\r\naLog = Import[\"alog.dat\", \"List\"];\r\nallRange = (Read[StringToStream[#1], Number] &) /@ \r\n   StringCases[aLog[[1]], NumberString];\r\nPrint[\"The calulated range (a.u.) : \", allRange]\r\nquantizationParameters = (Read[StringToStream[#1], Number] &) /@ \r\n   StringCases[aLog[[3]], NumberString][[1 ;; 4]];\r\nPrint[\"The quantization Parameters,nr,nj,trux: \", quantizationParameters]\r\nevolutionaryStep = (Read[StringToStream[#1], Number] &) /@ \r\n   StringCases[aLog[[4]], NumberString];\r\nPrint[\"The evolutionary step (fs) :  \", evolutionaryStep[[2]]]\r\nreducedMass = (Read[StringToStream[#1], Number] &) /@ \r\n   StringCases[aLog[[6]], NumberString][[1]];\r\nPrint[\"The reduced mass (a.u.) : \", reducedMass]\r\nrotationCoefficent = (Read[StringToStream[#1], Number] &) /@ \r\n   StringCases[aLog[[6]], NumberString][[2]];\r\nPrint[\"The rotation coefficient (1/cm) of molecule : \", rotationCoefficent]\r\ncalculatedTimeBoundary = (Read[StringToStream[#1], Number] &) /@ \r\n   StringCases[aLog[[10]], NumberString];\r\nPrint[\"The calulated turn point (fs) : \", calculatedTimeBoundary]\r\nionRange = {calculatedTimeBoundary[[1]], Number[allRange][[1, 2]]};\r\nPrint[\"The calulated of ionization range : \", ionRange]\r\nrRange = ((Read[StringToStream[#1], Number] &) /@ \r\n     StringCases[aLog[[4]], NumberString])[[2 ;; 3]];\r\nPrint[\"The internuclear distance ragne (a.u.) : \", rRange]\r\nlaserRange = {allRange[[1]], calculatedTimeBoundary[[1]]};\r\nPrint[\"The main durtion of alignt laser (fs) : \", laserRange]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nWhich[FileExistsQ[\"absb.dat\"], fileName = \"absb.dat\", \r\n FileExistsQ[\"Absorption.dat\"], fileName = \"Absorption.dat\"]; Absorption = \r\n FindFormula[Import[fileName], r];\r\nShow[ListPlot[Import[fileName], PlotTheme -> \"Scientific\", \r\n  PlotRange -> {{rRange[[1]], rRange[[2]]}, All}, \r\n  PlotLegends -> \r\n   Placed[\"\\[FilledSmallCircle]\\[FilledSmallCircle]  Draw from the data\", \r\n    Scaled[{0.5, 0.7}]], FrameLabel -> {\"R (a.u.)\", \"Absorption Ratio\"}], \r\n Plot[Absorption, {r, rRange[[1]], rRange[[2]]}, \r\n  PlotRange -> {{rRange[[1]], rRange[[2]]}, All}, PlotStyle -> Dashed, \r\n  PlotLegends -> \r\n   Placed[\"--  Draw \" TraditionalForm[Absorption], Scaled[{0.5, 0.5}]]]]\r\nExport[\"Absorption.jpeg\", %]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nClearAll[data, data0, data1, data2, data3, data4, data5];\r\nSubscript[V, Num] = 0; n = Length[FileNames[All, \"p_vgr_vj\"]];\r\nArray[data0, {n, 5}];\r\nArray[data1, {n, 5}];\r\nArray[data2, {n, 5}];\r\nArray[data3, {n, 5}];\r\nArray[data4, {n, 5}];\r\nArray[data5, {n, 5}];\r\nDo[If[FileExistsQ[\"p_vgr_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], \r\n   data = Import[\"p_vgr_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\", \r\n      \"Table\"][[All, 2 ;; 3]]; \r\n   Table[data0[i/5, i0] = data[[i0 + Subscript[V, Num] 50, 2]], {i0, 1, 5}]; \r\n   Table[data1[i/5, i1] = data[[i1 + (Subscript[V, Num] + 1) 50, 2]], {i1, 1, \r\n     5}]; Table[\r\n    data2[i/5, i2] = data[[i2 + (Subscript[V, Num] + 2) 50, 2]], {i2, 1, 5}]; \r\n   Table[data3[i/5, i2] = data[[i2 + (Subscript[V, Num] + 3) 50, 2]], {i2, 1, \r\n     5}]; Table[\r\n    data4[i/5, i2] = data[[i2 + (Subscript[V, Num] + 4) 50, 2]], {i2, 1, 5}]; \r\n   Table[data5[i/5, i2] = data[[i2 + (Subscript[V, Num] + 5) 50, 2]], {i2, 1, \r\n     5}], None], {i, 1, 2000}];\r\nGraphicsGrid[{{Show[\r\n    ListLinePlot[Table[Table[{i 5, data0[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[Table[\r\n        \"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num]] <> \",\" <> \r\n         ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], Right], \r\n     PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]], \r\n   Show[ListLinePlot[Table[Table[{i 5, data1[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[Table[\r\n        \"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num] + 1] <> \",\" <> \r\n         ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], Right], \r\n     PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]]}, {Show[\r\n    ListLinePlot[Table[Table[{i 5, data2[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[Table[\r\n        \"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num] + 2] <> \",\" <> \r\n         ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], Right], \r\n     PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]], \r\n   Show[ListLinePlot[Table[Table[{i 5, data3[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[\r\n       Table[\"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num] + 3] <> \r\n         \",\" <> ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], \r\n       Right], PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]]}, {Show[\r\n    ListLinePlot[Table[Table[{i 5, data4[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[Table[\r\n        \"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num] + 4] <> \",\" <> \r\n         ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], Right], \r\n     PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]], \r\n   Show[ListLinePlot[Table[Table[{i 5, data5[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[Table[\r\n        \"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num] + 5] <> \",\" <> \r\n         ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], Right], \r\n     PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]]}}, ImageSize -> 800]\r\nExport[\"GroPopOfV\" <> ToString[Subscript[V, Num]] <> \"To\" <> \r\n   ToString[Subscript[V, Num] + 5] <> \"J1To5.jpeg\", %];\r\nClearAll[n, data, data0, data1, data2, data3, data4, data5, ilabel]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nClearAll[data, data0, data1, data2, data3, data4, data5];\r\nSubscript[V, Num] = 7;\r\nn = Length[FileNames[All, \"p_exc_vj\"]];\r\nArray[data0, {n, 5}];\r\nArray[data1, {n, 5}];\r\nArray[data2, {n, 5}];\r\nArray[data3, {n, 5}];\r\nArray[data4, {n, 5}];\r\nArray[data5, {n, 5}];\r\nDo[If[FileExistsQ[\"p_exc_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], \r\n   data = Import[\"p_exc_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\", \r\n      \"Table\"][[All, 2 ;; 3]]; \r\n   Table[data0[i/5, i0] = data[[i0 + Subscript[V, Num] 50, 2]], {i0, 1, 5}]; \r\n   Table[data1[i/5, i1] = data[[i1 + (Subscript[V, Num] + 1) 50, 2]], {i1, 1, \r\n     5}]; Table[\r\n    data2[i/5, i2] = data[[i2 + (Subscript[V, Num] + 2) 50, 2]], {i2, 1, 5}]; \r\n   Table[data3[i/5, i2] = data[[i2 + (Subscript[V, Num] + 3) 50, 2]], {i2, 1, \r\n     5}]; Table[\r\n    data4[i/5, i2] = data[[i2 + (Subscript[V, Num] + 4) 50, 2]], {i2, 1, 5}]; \r\n   Table[data5[i/5, i2] = data[[i2 + (Subscript[V, Num] + 5) 50, 2]], {i2, 1, \r\n     5}], None], {i, 1, 2000}];\r\nGraphicsGrid[{{Show[\r\n    ListLinePlot[Table[Table[{i 5, data0[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[Table[\r\n        \"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num]] <> \",\" <> \r\n         ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], Right], \r\n     PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]], \r\n   Show[ListLinePlot[Table[Table[{i 5, data1[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[Table[\r\n        \"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num] + 1] <> \",\" <> \r\n         ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], Right], \r\n     PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]]}, {Show[\r\n    ListLinePlot[Table[Table[{i 5, data2[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[Table[\r\n        \"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num] + 2] <> \",\" <> \r\n         ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], Right], \r\n     PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]], \r\n   Show[ListLinePlot[Table[Table[{i 5, data3[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[\r\n       Table[\"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num] + 3] <> \r\n         \",\" <> ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], \r\n       Right], PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]]}, {Show[\r\n    ListLinePlot[Table[Table[{i 5, data4[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[Table[\r\n        \"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num] + 4] <> \",\" <> \r\n         ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], Right], \r\n     PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]], \r\n   Show[ListLinePlot[Table[Table[{i 5, data5[i, j]}, {i, 1, n}], {j, 1, 5}], \r\n     PlotTheme -> \"Scientific\", PlotRange -> All, AspectRatio -> 1/2, \r\n     ImageSize -> 300, FrameLabel -> {\"Time (fs)\", \"Population\"}, \r\n     PlotLegends -> \r\n      Placed[Table[\r\n        \"\\[RightBracketingBar]\" <> ToString[Subscript[V, Num] + 5] <> \",\" <> \r\n         ToString[ilabel] <> \"\\[RightAngleBracket]\", {ilabel, 1, 5}], Right], \r\n     PlotStyle -> {{Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}, {Dashed, \r\n        Thickness[0.005]}, {Dashed, Thickness[0.005]}}]]}}, ImageSize -> 800]\r\nExport[\"ExcPopOfV\" <> ToString[Subscript[V, Num]] <> \"To\" <> \r\n   ToString[Subscript[V, Num] + 5] <> \"J1To5.jpeg\", %];\r\nClearAll[n, data, data0, data1, data2, data3, data4, data5, ilabel]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nRow[{\"Progress: \", ProgressIndicator[Dynamic[progress]]}]\r\nWhich[FileExistsQ[\"Laser.dat\"], fileName = \"Laser.dat\", \r\n  FileExistsQ[\"LaserField.dat\"], fileName = \"LaserField.dat\"];\r\nGraphicsColumn[{ListLinePlot[Import[\"Laser.dat\"][[All, 1 ;; 2 ;; 1]], \r\n   FrameLabel -> {\"Time (fs)\", \"Intensity (a.u.)\"}, \r\n   PlotStyle -> Thickness[0.002], \r\n   PlotLegends -> Placed[{\"Align\"}, Scaled[{0.8, 0.8}]], \r\n   PlotTheme -> \"Scientific\", PlotRange -> {laserRange, All}], \r\n  ListLinePlot[Import[\"Laser.dat\"][[All, 1 ;; 3 ;; 2]], \r\n   FrameLabel -> {\"Time (fs)\", \"Intensity (a.u.)\"}, \r\n   PlotStyle -> Thickness[0.002], \r\n   PlotLegends -> Placed[{\"Pump\"}, Scaled[{0.8, 0.8}]], \r\n   PlotTheme -> \"Scientific\", PlotRange -> {ionRange, All}], \r\n  ListLinePlot[Import[\"Laser.dat\"][[All, 1 ;; 4 ;; 3]], \r\n   FrameLabel -> {\"Time (fs)\", \"Intensity (a.u.)\"}, \r\n   PlotStyle -> Thickness[0.002], PlotRange -> {ionRange, All}, \r\n   PlotTheme -> \"Scientific\", \r\n   PlotLegends -> Placed[{\"Probe\"}, Scaled[{0.8, 0.8}]], PlotRange -> All]}]\r\n\r\nExport[\"Lasers.jpeg\", %]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nPrintTemporary[\"-=-Plot Laser Dis-=-\"];\r\nWhich[FileExistsQ[\"Laser.dat\"], fileName = \"Laser.dat\", \r\n  FileExistsQ[\"LaserField.dat\"], fileName = \"LaserField.dat\"];\r\nGraphicsGrid[{{ListLinePlot[Import[fileName][[All, 1 ;; 2 ;; 1]], \r\n    FrameLabel -> {\"Time (fs)\", \"Intensity (a.u.)\"}, \r\n    PlotStyle -> Thickness[0.002], PlotLabels -> Placed[{\"Align\"}, Top], \r\n    PlotTheme -> \"Scientific\", PlotRange -> {laserRange, All}], \r\n   ListLinePlot[Import[fileName][[All, 1 ;; 3 ;; 2]], \r\n    FrameLabel -> {\"Time (fs)\", \"Intensity (a.u.)\"}, \r\n    PlotStyle -> Thickness[0.002], PlotLabels -> Placed[{\"Pump\"}, Top], \r\n    PlotTheme -> \"Scientific\", PlotRange -> {ionRange, All}], \r\n   ListLinePlot[Import[fileName][[All, 1 ;; 4 ;; 3]], \r\n    FrameLabel -> {\"Time (fs)\", \"Intensity (a.u.)\"}, \r\n    PlotStyle -> Thickness[0.002], PlotRange -> {ionRange, All}, \r\n    PlotTheme -> \"Scientific\", PlotLabels -> Placed[{\"Porbe\"}, Top], \r\n    PlotRange -> All]}, {ListLinePlot[Import[\"laser_fre1.dat\"], \r\n    PlotRange -> All, \r\n    FrameLabel -> {\"Frequency (a.u.)\", \"Intensity (arb. units)\"}, \r\n    PlotTheme -> \"Scientific\", PlotLabels -> Placed[{\"Align\"}, Top]], \r\n   ListLinePlot[Import[\"laser_fre2.dat\"], PlotRange -> {Automatic, All}, \r\n    FrameLabel -> {\"Frequency (a.u.)\", \"Intensity (arb. units)\"}, \r\n    PlotTheme -> \"Scientific\", PlotLabels -> Placed[{\"Pump\"}, Top]], \r\n   ListLinePlot[Import[\"laser_fre3.dat\"], PlotRange -> All, \r\n    FrameLabel -> {\"Frequency (a.u.)\", \"Intensity (arb. units)\"}, \r\n    PlotTheme -> \"Scientific\", PlotLabels -> Placed[{\"Probe\"}, Top]]}}, \r\n ImageSize -> Full]\r\n\r\nExport[\"laser.jpeg\", %]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "PrintTemporary[\"Ploting potentional\"];\r\nWhich[FileExistsQ[\"pott.dat\"], fileName = \"pott.dat\", \r\n  FileExistsQ[\"PotentialEnergy.dat\"], fileName = \"PotentialEnergy.dat\"];\r\nWhich[FileExistsQ[\"Dipole.dat\"], fileName1 = \"Dipole.dat\", \r\n  FileExistsQ[\"DipoleMoment.dat\"], fileName1 = \"DipoleMoment.dat\"];\r\nGraphicsRow[{ListLinePlot[\r\n   Table[Import[fileName][[All, 1 ;; i + 1 ;; i]], {i, 1, 3}], \r\n   PlotRange -> {rRange, All}, PlotMarkers -> None, ImageSize -> 300, \r\n   AspectRatio -> 2, PlotLabel -> \"Potential energy of States\", \r\n   FrameLabel -> {\"Internuclear distance (a.u.)\", \"Potential Energy (a.u.)\"}, \r\n   PlotTheme -> \"Scientific\", \r\n   PlotStyle -> {{Black, Thickness[0.003]}, {Dashed, \r\n      Thickness[0.003]}, {DotDashed, Thickness[0.003]}}, \r\n   FrameTicks -> Automatic, \r\n   PlotLegends -> \r\n    Placed[LineLegend[{\"\\!\\(\\*SuperscriptBox[\\(X\\), \\\r\n\\(1\\)]\\)\\!\\(\\*SuperscriptBox[\\(\\[CapitalSigma]\\), \\(+\\)]\\)\", \r\n       \"\\!\\(\\*SuperscriptBox[\\(A\\), \\(1\\)]\\)\\!\\(\\*SuperscriptBox[\\\r\n\\(\\[CapitalSigma]\\), \\(+\\)]\\)\", \r\n       \"\\!\\(\\*SuperscriptBox[\\(X\\), \\(2\\)]\\)\\!\\(\\*SuperscriptBox[\\\r\n\\(\\[CapitalSigma]\\), \\(+\\)]\\)\"}, \r\n      LegendFunction -> (Framed[#1, RoundingRadius -> 0, \r\n          FrameStyle -> LightGray] &), LegendLayout -> \"Column\"], \r\n     Scaled[{0.75, 0.85}]]], \r\n  ListLinePlot[Table[Import[fileName1][[All, 1 ;; i + 1 ;; i]], {i, 1, 3}], \r\n   PlotRange -> {rRange, All}, PlotMarkers -> None, ImageSize -> 300, \r\n   AspectRatio -> 2, PlotLabel -> \"Dipole moment and Transition moment\", \r\n   FrameLabel -> {\"Internuclear distance (a.u.)\", \"Dipole moment (a.u.)\"}, \r\n   PlotTheme -> \"Scientific\", \r\n   PlotStyle -> {{Black, Thickness[0.003]}, {Dashed, \r\n      Thickness[0.003]}, {DotDashed, Thickness[0.003]}}, \r\n   FrameTicks -> Automatic, \r\n   PlotLegends -> \r\n    Placed[LineLegend[{\"\\!\\(\\*SuperscriptBox[\\(X\\), \\\r\n\\(1\\)]\\)\\!\\(\\*SuperscriptBox[\\(\\[CapitalSigma]\\), \\(+\\)]\\) - \\\r\n\\!\\(\\*SuperscriptBox[\\(X\\), \\(1\\)]\\)\\!\\(\\*SuperscriptBox[\\(\\[CapitalSigma]\\), \\\r\n\\(+\\)]\\)\", \r\n       \"\\!\\(\\*SuperscriptBox[\\(A\\), \\(1\\)]\\)\\!\\(\\*SuperscriptBox[\\\r\n\\(\\[CapitalSigma]\\), \\(+\\)]\\) - \\!\\(\\*SuperscriptBox[\\(A\\), \\\r\n\\(1\\)]\\)\\!\\(\\*SuperscriptBox[\\(\\[CapitalSigma]\\), \\(+\\)]\\)\", \r\n       \"\\!\\(\\*SuperscriptBox[\\(X\\), \\(1\\)]\\)\\!\\(\\*SuperscriptBox[\\\r\n\\(\\[CapitalSigma]\\), \\(+\\)]\\) - \\!\\(\\*SuperscriptBox[\\(A\\), \\\r\n\\(1\\)]\\)\\!\\(\\*SuperscriptBox[\\(\\[CapitalSigma]\\), \\(+\\)]\\)\"}, \r\n      LegendFunction -> (Framed[#1, RoundingRadius -> 0, \r\n          FrameStyle -> LightGray] &), LegendLayout -> \"Column\"], \r\n     Scaled[{0.65, 0.15}]]]}, ImageSize -> 650]\r\n\r\nExport[\"PotAndDip.jpeg\", %];\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "PrintTemporary[\"Ploting Population of rotational state\"];\r\nGraphicsColumn[{ListDensityPlot[\r\n   Import[\"p_vgr_v.dat\", \"Table\"][[1 ;; All ;; 1, 1 ;; 3]], \r\n   PlotTheme -> \"Scientific\", PlotRange -> {ionRange, {0, 20}, All}, \r\n   PlotLabel -> \"Ground state\", ImageSize -> 250, \r\n   PlotLegends -> Placed[Automatic, Right], \r\n   ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n   PlotRangePadding -> 0, \r\n   FrameLabel -> {\"Time (fs)\", \" vibrational quantum number\"}, \r\n   AspectRatio -> 1/2, FrameTicks -> Automatic, InterpolationOrder -> 0], \r\n  ListDensityPlot[Import[\"p_exc_v.dat\", \"Table\"][[1 ;; All ;; 1, 1 ;; 3]], \r\n   PlotTheme -> \"Scientific\", \r\n   ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n   PlotRange -> {ionRange, {0, 20}, All}, PlotLabel -> \"Excited state\", \r\n   ImageSize -> 250, PlotLegends -> Placed[Automatic, Right], \r\n   PlotRangePadding -> 0, \r\n   FrameLabel -> {\"Time (fs)\", \" vibrational quantum number\"}, \r\n   AspectRatio -> 1/2, FrameTicks -> Automatic, InterpolationOrder -> 0]}]\r\n\r\nExport[\"P_v.jpeg\", %]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "PrintTemporary[\"Ploting Alignment And Orientation\"];\r\nWhich[FileExistsQ[\"cos1.dat\"], fileName = \"cos1.dat\", \r\n  FileExistsQ[\"OrientationAndAlignment.dat\"], \r\n  fileName = \"OrientationAndAlignment.dat\"];\r\nListLinePlot[Table[Import[fileName][[All, 1 ;; i + 1 ;; i]], {i, 1, 2}], \r\n DataRange -> allRange, PlotMarkers -> None, ImageSize -> 500, \r\n AspectRatio -> 3/5, PlotLabel -> \"Alignment And Orientation\", \r\n FrameLabel -> {\"Time (fs)\", \"Value\"}, PlotTheme -> \"Scientific\", \r\n PlotStyle -> {{Black, Thickness[0.003]}, {Dashed, \r\n    Thickness[0.003]}, {DotDashed, Thickness[0.003]}}, \r\n FrameTicks -> Automatic, \r\n PlotLegends -> \r\n  Placed[LineLegend[{\"cos\\[Theta]\", \r\n     \"\\!\\(\\*SuperscriptBox[\\(cos\\), \\(2\\)]\\)\\[Theta]\"}, \r\n    LegendFunction -> (Framed[#1, RoundingRadius -> 0, \r\n        FrameStyle -> LightGray] &), LegendLayout -> \"Column\"], \r\n   Scaled[{0.80, 0.7250}]]]\r\n\r\nExport[\"OriAndAli.jpeg\", %]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nGraphicsColumn[{ListLinePlot[\r\n   Table[Import[\"ori_ali_1.dat\"][[All, 1 ;; i + 1 ;; i]], {i, 1, 2}], \r\n   PlotRange -> {ionRange, All}, PlotMarkers -> None, ImageSize -> 500, \r\n   AspectRatio -> 3/5, PlotLabel -> \"Ground state\", \r\n   FrameLabel -> {\"Time (fs)\", \"Value\"}, PlotTheme -> \"Scientific\", \r\n   PlotStyle -> {{Black, Thickness[0.003]}, {Dashed, \r\n      Thickness[0.003]}, {DotDashed, Thickness[0.003]}}, \r\n   FrameTicks -> Automatic, \r\n   PlotLegends -> \r\n    Placed[LineLegend[{\"cos\\[Theta]\", \r\n       \"\\!\\(\\*SuperscriptBox[\\(cos\\), \\(2\\)]\\)\\[Theta]\"}, \r\n      LegendFunction -> (Framed[#1, RoundingRadius -> 0, \r\n          FrameStyle -> LightGray] &), LegendLayout -> \"Column\"], \r\n     Scaled[{0.80, 0.7250}]]], \r\n  ListLinePlot[\r\n   Table[Import[\"ori_ali_2.dat\"][[All, 1 ;; i + 1 ;; i]], {i, 1, 2}], \r\n   PlotRange -> {ionRange, All}, PlotMarkers -> None, ImageSize -> 500, \r\n   AspectRatio -> 3/5, PlotLabel -> \"Excited state\", \r\n   FrameLabel -> {\"Time (fs)\", \"Value\"}, PlotTheme -> \"Scientific\", \r\n   PlotStyle -> {{Black, Thickness[0.003]}, {Dashed, \r\n      Thickness[0.003]}, {DotDashed, Thickness[0.003]}}, \r\n   FrameTicks -> Automatic, \r\n   PlotLegends -> \r\n    Placed[LineLegend[{\"cos\\[Theta]\", \r\n       \"\\!\\(\\*SuperscriptBox[\\(cos\\), \\(2\\)]\\)\\[Theta]\"}, \r\n      LegendFunction -> (Framed[#1, RoundingRadius -> 0, \r\n          FrameStyle -> LightGray] &), LegendLayout -> \"Column\"], \r\n     Scaled[{0.80, 0.7250}]]]}]\r\n\r\nExport[\"AliAndOriOfGroAndExc.jpeg\", %]\r\n\r\nPlot radials-resolved wavefunction of states\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nstep = 1;\r\nPrintTemporary[\"-=-Ploting Radial wave function-=-\"];\r\nWhich[FileExistsQ[\"vgr_rad.dat\"], fileName1 = \"vgr_rad.dat\", \r\n FileExistsQ[\"GroRadWave.dat\"], fileName1 = \"GroRadWave.dat\"]; Which[\r\n FileExistsQ[\"exc_rad.dat\"], fileName2 = \"exc_rad.dat\", \r\n FileExistsQ[\"ExcRadWave.dat\"], fileName2 = \"ExcRadWave.dat\"]; Which[\r\n FileExistsQ[\"ion_rad.dat\"], fileName3 = \"ion_rad.dat\", \r\n FileExistsQ[\"IonRadWave.dat\"], fileName3 = \"IonRadWave.dat\"];\r\nPrint[fileName1, fileName2, fileName3];\r\nGraphicsGrid[{{ListDensityPlot[\r\n    Import[fileName1, \"Table\"][[1 ;; All ;; step, 1 ;; 3]], \r\n    PlotTheme -> \"Scientific\", PlotLegends -> Placed[Automatic, Right], \r\n    ImageSize -> 250, PlotRangePadding -> 0, \r\n    ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n    PlotRange -> {allRange, rRange, All}, AspectRatio -> 3/4, \r\n    PlotLabel -> \"Gro\", FrameLabel -> {\"Time (fs)\", \"R (a.u.)\"}], \r\n   ListDensityPlot[Import[fileName2, \"Table\"][[1 ;; All ;; step, 1 ;; 3]], \r\n    PlotTheme -> \"Scientific\", PlotLegends -> Placed[Automatic, Right], \r\n    ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), ImageSize -> 250, \r\n    PlotRange -> {ionRange, rRange, All}, PlotRangePadding -> 0, \r\n    PlotLabel -> \"Exc\", FrameLabel -> {\"Time (fs)\", \"R (a.u.)\"}, \r\n    AspectRatio -> 3/4]}, {ListDensityPlot[\r\n    Import[fileName3, \"Table\"][[1 ;; All ;; step, 1 ;; 3]], \r\n    PlotTheme -> \"Scientific\", \r\n    ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n    PlotRange -> {ionRange, rRange, All}, PlotLabel -> \"Ion\", \r\n    ImageSize -> 250, PlotLegends -> Placed[Automatic, Right], \r\n    PlotRangePadding -> 0, FrameLabel -> {\"Time (fs)\", \"R (a.u.)\"}, \r\n    AspectRatio -> 3/4, FrameTicks -> Automatic], \r\n   ListDensityPlot[Import[\"totalraddis.dat\"][[1 ;; All ;; step, 1 ;; 3]], \r\n    AspectRatio -> 3/4, PlotRange -> {allRange, rRange, All}, \r\n    ImageSize -> 250, PlotLegends -> Placed[Automatic, Right], \r\n    PlotRangePadding -> 0, \r\n    ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n    PlotLabel -> \"Total\", FrameLabel -> {\"Time (fs)\", \"R (a.u.)\"}, \r\n    PlotTheme -> \"Scientific\"]}}, ImageSize -> 700]\r\n\r\nExport[\"RadiallWaveFunction.jpeg\", %]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nPrintTemporary[\"-=-Ploting Angle wave function-=-\"];\r\nWhich[FileExistsQ[\"vgr_ang.dat\"], fileName1 = \"vgr_ang.dat\", \r\n FileExistsQ[\"GroAngWave.dat\"], fileName1 = \"GroAngWave.dat\"]; Which[\r\n FileExistsQ[\"exc_ang.dat\"], fileName2 = \"exc_ang.dat\", \r\n FileExistsQ[\"ExcAngWave.dat\"], fileName2 = \"ExcAngWave.dat\"]; Which[\r\n FileExistsQ[\"ion_ang.dat\"], fileName3 = \"ion_ang.dat\", \r\n FileExistsQ[\"IonAngWave.dat\"], fileName3 = \"IonAngWave.dat\"];\r\nGraphicsGrid[{{ListDensityPlot[\r\n    Import[\"vgr_ang.dat\", \"Table\"][[1 ;; All ;; 1, 1 ;; 3]], \r\n    PlotTheme -> \"Scientific\", PlotLegends -> Placed[Automatic, Right], \r\n    ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n    InterpolationOrder -> 5, ImageSize -> 250, PlotRange -> {All, All, All}, \r\n    AspectRatio -> 3/4, PlotRangePadding -> 0, PlotLabel -> \"Gro\", \r\n    FrameLabel -> {\"Time (fs)\", \"Angle (degree)\"}], \r\n   ListDensityPlot[Import[\"exc_ang.dat\", \"Table\"][[1 ;; All ;; 1, 1 ;; 3]], \r\n    PlotTheme -> \"Scientific\", InterpolationOrder -> 5, ImageSize -> 250, \r\n    PlotLegends -> Placed[Automatic, Right], \r\n    ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n    PlotRange -> {ionRange, All, All}, PlotLabel -> \"Exc\", \r\n    FrameLabel -> {\"Time (fs)\", \"Angle (degree)\"}, PlotRangePadding -> 0, \r\n    AspectRatio -> 3/4]}, {ListDensityPlot[\r\n    Import[\"ion_ang.dat\", \"Table\"][[1 ;; All ;; 1, 1 ;; 3]], \r\n    PlotTheme -> \"Scientific\", InterpolationOrder -> 5, ImageSize -> 250, \r\n    ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n    PlotRange -> {ionRange, All, All}, PlotLabel -> \"Ion\", \r\n    PlotLegends -> Placed[Automatic, Right], PlotRangePadding -> 0, \r\n    FrameLabel -> {\"Time (fs)\", \"Angle (degree)\"}, AspectRatio -> 3/4, \r\n    FrameTicks -> Automatic], \r\n   ListDensityPlot[Import[\"totalangdis.dat\"][[1 ;; All ;; 1, 1 ;; 3]], \r\n    AspectRatio -> 3/4, PlotRange -> {All, All, All}, InterpolationOrder -> 5,\r\n     ImageSize -> 250, PlotLegends -> Placed[Automatic, Right], \r\n    ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n    PlotLabel -> \"Total\", PlotRangePadding -> 0, \r\n    FrameLabel -> {\"Time (fs)\", \"Angle (degree)\"}, \r\n    PlotTheme -> \"Scientific\"]}}, ImageSize -> 650]\r\n\r\nExport[\"AngleWaveFunction.jpeg\", %]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nPrintTemporary[\"-=-Ploting Population-=-\"];\r\nWhich[FileExistsQ[\"Popu.dat\"], fileName = \"Popu.dat\", \r\n  FileExistsQ[\"PopulationOfState.dat\"], fileName = \"PopulationOfState.dat\"];\r\nListLinePlot[Table[Import[fileName][[All, 1 ;; i + 1 ;; i]], {i, 1, 3}], \r\n PlotRange -> {ionRange, All}, PlotMarkers -> None, ImageSize -> 500, \r\n AspectRatio -> 3/5, PlotLabel -> \"Population of States\", \r\n FrameLabel -> {\"Time (fs)\", \"Population\"}, PlotTheme -> \"Scientific\", \r\n PlotStyle -> {{Black, Thickness[0.003]}, {Dashed, \r\n    Thickness[0.003]}, {DotDashed, Thickness[0.003]}}, \r\n FrameTicks -> Automatic, \r\n PlotLegends -> \r\n  Placed[LineLegend[{\"G\", \"E\", \"I\"}, \r\n    LegendFunction -> (Framed[#1, RoundingRadius -> 0, \r\n        FrameStyle -> LightGray] &), LegendLayout -> \"Column\"], \r\n   Scaled[{0.80, 0.80}]]]\r\n\r\nExport[\"pop.jpeg\", %]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nPrintTemporary[\"-=-Ploting Energy Spctra-=-\"];\r\nListDensityPlot[Import[\"timeenergyspctra.dat\"][[1 ;; All ;; 10, 1 ;; 3]], \r\n AspectRatio -> 3/4, Frame -> True, FrameTicksStyle -> 12, \r\n ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n FrameLabel -> {\"Time (ps)\", \"Intensity (arb. units)\"}, ImageSize -> 500, \r\n Mesh -> None, PlotRange -> {ionRange, All, All}, \r\n PlotLegends -> Placed[Automatic, Right]]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nDo[DeleteFile[\"wave\\\\wave_at_neg\" <> ToString[i] <> \"_fs.dat\"], {i, 0, 1000, \r\n   1}];\r\nClearAll[ExistFileNumber];\r\nn = Length[FileNames[All, \"wave\"]]\r\nArray[ExistFileNumber, n];\r\nname[3] = \"G (\";\r\nname[4] = \"E (\";\r\nname[5] = \"I (\";\r\nRMax = rRange[[2]];\r\nj = 0;\r\nDo[If[FileExistsQ[\"wave\\\\wave_at_pos\" <> ToString[i] <> \"_fs.dat\"], j = j + 1;\r\n    ExistFileNumber[j] = i, None], {i, 1, 5070, 1}];\r\nTable[ExistFileNumber[i], {i, n}]\r\nDo[Export[\"wave\\\\wave_at_pos\" <> ToString[i] <> \"_fs.jpeg\", \r\n   GraphicsRow[\r\n    Table[ListDensityPlot[\r\n      Import[\"wave\\\\wave_at_pos\" <> ToString[i] <> \"_fs.dat\", \"Table\"][[\r\n       All, {1, 2, j}]], InterpolationOrder -> 0, Frame -> None, Axes -> True,\r\n       ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n      PlotLegends -> BarLegend[{Automatic, {0, 1}}, 150], \r\n      FrameTicksStyle -> Directive[Black, 10], \r\n      RegionFunction -> Function[{x, y, All}, x^2 + y^2 < RMax^2], \r\n      PlotRange -> {{-RMax, RMax}, {-RMax, RMax}, All}, AspectRatio -> 1, \r\n      PlotRangePadding -> None, PlotLabel -> name[j] <> ToString[i] <> \" fs)\",\r\n       FrameLabel -> {\"R\", \"R\"}, ImageSize -> 250], {j, 3, 5}], \r\n    ImageSize -> 1050]], {i, Table[ExistFileNumber[ii], {ii, 1, n, 1}]}];\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nExport[\"wave.gif\", \r\n Table[Import[\"wave\\\\wave_at_pos\" <> ToString[i] <> \"_fs.jpeg\"], {i, \r\n   Table[ExistFileNumber[ii], {ii, 1, n}]}], \"DisplayDurations\" -> 0.15]\r\nDeleteFile[\r\n Table[\"wave\\\\wave_at_pos\" <> ToString[i] <> \"_fs.jpeg\", {i, \r\n   Table[ExistFileNumber[ii], {ii, 1, n}]}]]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nDo[DeleteFile[{\"p_exc_vj\\\\p_vj_at_neg\" <> ToString[i] <> \"_fs.dat\", \r\n    \"p_vgr_vj\\\\p_vj_at_neg\" <> ToString[i] <> \"_fs.dat\"}], {i, 0, 1000, 1}]\r\n    \r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "ClearAll[ExistFileNumber];\r\nn = Length[FileNames[All, \"p_vgr_vj\"]]\r\nArray[ExistFileNumber, n];\r\nj = 0;\r\nDo[If[FileExistsQ[\"p_vgr_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], \r\n   j = j + 1; ExistFileNumber[j] = i, None], {i, 1, 5070}];\r\nTable[ExistFileNumber[i], {i, n}]\r\nDo[Export[\"p_vgr_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.jpeg\", \r\n   GraphicsRow[{ListDensityPlot[\r\n      Import[\"p_vgr_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\", \"Table\"][[\r\n       All, 1 ;; 3]], InterpolationOrder -> 0, \r\n      ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n      PlotLegends -> BarLegend[{Automatic, {0, 1}}, 150], \r\n      FrameTicksStyle -> Directive[Black, 10], \r\n      PlotRange -> {{-0.5, 25.5}, {-0.5, 50.5}, All}, \r\n      AspectRatio -> 2 (1 (1 1/1)), PlotRangePadding -> None, \r\n      PlotLabel -> \"G (\" <> ToString[i] <> \" fs)\", FrameLabel -> {\"V\", \"J\"}, \r\n      ImageSize -> 250], \r\n     ListDensityPlot[\r\n      Import[\"p_exc_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\", \"Table\"][[\r\n       All, 1 ;; 3]], ColorFunction -> (Hue[Rescale[#1, {0, 1}, {.7, 0}]] &), \r\n      InterpolationOrder -> 0, PlotRange -> {{-0.5, 25.5}, {-0.5, 50.5}, All},\r\n       AspectRatio -> 2 (1 (1 1/1)), \r\n      PlotLegends -> BarLegend[{Automatic, {0, 1}}, 150], \r\n      PlotRangePadding -> None, FrameTicksStyle -> Directive[Black, 10], \r\n      PlotLabel -> \"E (\" <> ToString[i] <> \" fs)\", FrameLabel -> {\"V\", \"J\"}, \r\n      ImageSize -> 250]}, ImageSize -> 700]], {i, \r\n   Table[ExistFileNumber[ii], {ii, 1, n}]}];\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nExport[\"p_vj_contour.gif\", \r\n  Table[Import[\"p_vgr_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.jpeg\"], {i, \r\n    Table[ExistFileNumber[ii], {ii, 1, n}]}], \"DisplayDurations\" -> 0.15];\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nDeleteFile[\r\n Table[\"p_vgr_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.jpeg\", {i, \r\n   Table[ExistFileNumber[ii], {ii, 1, n}]}]]\r\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "\r\nUsingFrontEnd[SystemOpen[Directory[]]]",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

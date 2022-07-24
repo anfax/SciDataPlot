@@ -1,0 +1,91 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "SetDirectory[\"F:\\\\outputoforiginorient\"];\r\nPrint[Import[\"alog.DAT\",\"List\"]]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "TimeRange = {-10000, 15000};\r\n ListLinePlot[\r\n Table[Import[\"laser.dat\"][[All, 1 ;; i + 1 ;; i]], {i, 1,2 }], \r\n FrameLabel -> {\"Time (fs)\", \"Intensity (V/m)\"}, \r\n PlotStyle -> {{Black, Thickness[0.003]}, {Red, Thickness[0.003]}}, \r\n PlotLegends -> Placed[LineLegend[{\"1\", \"2\"}], Scaled[{0.6, 0.75}]], \r\n PlotTheme -> \"Scientific\", PlotRange -> {TimeRange, All}]",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "ListDensityPlot[Import[\"wave0.dat\"], \r\n PlotTheme -> \"Scientific\", PlotLegends -> Placed[Automatic, Right], \r\n ImageSize -> 250, \r\n ColorFunction -> (Hue[Rescale[#, {0, 1}, {.7, 0}]] &), \r\n PlotRange -> {{-5,5},{-5,5}, All}, AspectRatio -> 1, PlotRangePadding -> 0,\r\n PlotRangePadding -> 0, PlotLabel -> \"THe initoal wavepacket\", \r\n FrameLabel -> {\"R (a.u.)\", \"R (a.u.)\"}]\r\nExport[\"InitialWavePacket.jpeg\", %]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "**(*Plot potentional*)**",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "PrintTemporary[\"Ploting potentional\"];\r\nNameImage[1] = \"Potential Energy\";\r\nNameImage[2] = \"Dipole Moment\";\r\nGraphicsRow[\r\n Table[ListLinePlot[Import[\"pot.dat\"][[All, 1 ;; i + 1 ;; i]], \r\n   PlotRange -> {{1.75, 10}, All}, PlotMarkers -> None, \r\n    AspectRatio -> 2, PlotLabel -> NameImage[i], \r\n   FrameLabel -> {\"Internuclear distance (a.u.)\", \"Intensity (a.u.)\"},\r\n    PlotTheme -> \"Scientific\", \r\n   PlotStyle -> {{Black, Thickness[0.003]}, {Dashed, \r\n      Thickness[0.003]}, {DotDashed, Thickness[0.003]}}, \r\n   FrameTicks -> Automatic], {i, 1, 2}]]\r\nExport[\"PotentionalEnergy.jpeg\", %]",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "PrintTemporary[\"Ploting Orientation and Alignment\"];\r\nListLinePlot[\r\n Table[Import[\"cos1.dat\"][[All, 1 ;; i + 1 ;; i]], {i, 1, 2}], \r\n PlotRange -> {TimeRange, All}, PlotMarkers -> None, ImageSize -> 500,\r\n  AspectRatio -> 3/5, PlotLabel -> \"Orientation and Alignment\", \r\n FrameLabel -> {\"Time (fs)\", \"Value (arb. units)\"}, \r\n PlotTheme -> \"Scientific\", \r\n PlotStyle -> {{Black, Thickness[0.003]}, {Dashed, \r\n    Thickness[0.003]}, {DotDashed, Thickness[0.003]}}, \r\n FrameTicks -> Automatic, \r\n PlotLegends -> \r\n  Placed[LineLegend[{\"Orientation\", \"Alignment\"}], \r\n   Scaled[{0.1, 0.1}]]]\r\nExport[\"OrientationAndAlignment.jpeg\", %]",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "ListDensityPlot[Import[\"tap.dat\", \"Table\"][[1 ;; ;; 1, 1 ;; 3]], \r\n PlotTheme -> \"Scientific\", PlotLegends -> Placed[Automatic, Right], \r\n ColorFunction -> (Hue[Rescale[#, {0, 1}, {.7, 0}]] &), \r\n InterpolationOrder -> 5, ImageSize -> 600, PlotRangePadding -> 0,\r\n PlotRange -> {TimeRange, All, All}, AspectRatio -> 3/4, PlotLabel -> \"Angular distributions of molecular population\",\r\n  FrameLabel -> {\"Time (ps)\", \"Angle (degree)\"}]\r\nExport[\"AnglarWavePacket.jpeg\", %]",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "ListDensityPlot[Import[\"trp.dat\", \"Table\"][[1 ;; ;; 1, 1 ;; 3]], \r\n PlotTheme -> \"Scientific\", PlotLegends -> Placed[Automatic, Right], \r\n ImageSize -> 250, \r\n ColorFunction -> (Hue[Rescale[#, {0, 1}, {.7, 0}]] &), \r\n PlotRange -> {TimeRange, All, All}, AspectRatio -> 3/4, PlotRangePadding -> 0,\r\n PlotRangePadding -> 0, PlotLabel -> \"Radial  distributions of molecular wavepacket\", \r\n FrameLabel -> {\"Time (ps)\", \"R (a.u.)\"}]\r\nExport[\"RadialWavePacket.jpeg\", %]",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "PrintTemporary[\"Ploting population of rotational states\"];\r\nListLinePlot[\r\n Table[Import[\"p_veq0.dat\"][[All, 1 ;; i + 1 ;; i]], {i, 1, 6}], \r\n PlotRange -> {TimeRange, All}, PlotMarkers -> None, ImageSize -> 500,\r\n  AspectRatio -> 3/5, PlotLabel -> \"Population of rotational states\", \r\n FrameLabel -> {\"Time (fs)\", \r\n   \"Population (arb. uints)\"}, PlotTheme -> \"Scientific\", \r\n PlotStyle -> {{Black, Thickness[0.003]}, {Red, \r\n    Thickness[0.003]}, {Blue, Thickness[0.003]}, {Black, Dashed, \r\n    Thickness[0.003]}, {Red, Dashed, Thickness[0.003]}, {Blue, Dashed,\r\n     Thickness[0.003]}}, FrameTicks -> Automatic, \r\n PlotLegends -> \r\n  Placed[LineLegend[{\"|00>\", \"|01>\", \"|02>\", \"|03>\", \"|04>\", \"|05>\"}],\r\n    Scaled[{0.85, 0.7}]]]\r\nExport[\"PopulationOfRotationalState0.jpeg\", %]",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "PrintTemporary[\"Ploting population of rotational states\"];\r\nListLinePlot[\r\n Table[Import[\"p_veq1.dat\"][[All, 1 ;; i + 1 ;; i]], {i, 1, 6}], \r\n PlotRange -> {TimeRange, All}, PlotMarkers -> None, ImageSize -> 500,\r\n  AspectRatio -> 3/5, PlotLabel -> \"Population of rotational states\", \r\n FrameLabel -> {\"Time (fs)\", \r\n   \"Population (arb. uints)\"}, PlotTheme -> \"Scientific\", \r\n PlotStyle -> {{Black, Thickness[0.003]}, {Red, \r\n    Thickness[0.003]}, {Blue, Thickness[0.003]}, {Black, Dashed, \r\n    Thickness[0.003]}, {Red, Dashed, Thickness[0.003]}, {Blue, Dashed,\r\n     Thickness[0.003]}}, FrameTicks -> Automatic, \r\n PlotLegends -> \r\n  Placed[LineLegend[{\"|10>\", \"|11>\", \"|12>\", \"|13>\", \"|14>\", \"|15>\"}],\r\n    Scaled[{0.85, 0.6}]]]\r\nExport[\"PopulationOfRotationalState1.jpeg\", %]",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}
