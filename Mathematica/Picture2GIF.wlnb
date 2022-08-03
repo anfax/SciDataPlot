@@ -2,7 +2,7 @@
  "cells": [
   {
    "kind": 2,
-   "value": "SetDirectory[\"F:\\\\doc\\\\\"];\r\nImageName=AbsorptionVSRadialWavePacket;\r\nExport[ToString[ImageName]<>\".gif\",\r\nTable[Show[\"absorptionParameter\"<>ToString[j]<>\"-19DP5\"<>\"RadiallWaveFunction.jpeg\"],{j,2,19,1}\r\n]\r\n]",
+   "value": "SetDirectory[\"D:\\\\doc\\\\data\\\\ion1testold\\DifferentDelatTimeOfPumpAndProbe\"];\r\nImageName=AbsorptionVSRadialWavePacket;\r\nExport[ToString[ImageName]<>\".gif\",\r\nTable[Show[\"absorptionParameter\"<>ToString[j]<>\"-19DP5\"<>\"RadiallWaveFunction.jpeg\"],{j,2,19,1}\r\n]\r\n]",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
