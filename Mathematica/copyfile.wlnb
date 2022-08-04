@@ -2,7 +2,7 @@
  "cells": [
   {
    "kind": 2,
-   "value": "\r\n SetDirectory[\"D:\\\\doc\\\\data\\\\ion1testold\\\\PreAlign\\\\2100\" ];\r\n",
+   "value": "SetDirectory[\"D:\\\\doc\\\\data\\\\ion1testold\\\\wave\\\\84\" ];\r\npartName = \"p_vgr_vj%5Cp_vj_at_pos\"",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
@@ -19,7 +19,7 @@
   },
   {
    "kind": 2,
-   "value": "\r\n\r\n Do[If[FileExistsQ[\r\n    \"F%3A%5Cdataofion1%5Cp_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n   CopyFile[\"F%3A%5Cdataofion1%5Cp_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\", \r\n    \"p_vgr_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 5000, 1}]",
+   "value": "\r\n\r\n Do[If[FileExistsQ[\r\n    \"p_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n   CopyFile[\"p_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\", \r\n    \"p_vgr_vj\\\\p_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 5000, 1}]",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
@@ -35,7 +35,7 @@
   },
   {
    "kind": 2,
-   "value": " Do[If[FileExistsQ[\r\n   \"F%3A%5Cdataofion1%5Cwave%5Cwave_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n  DeleteFile[\"F%3A%5Cdataofion1%5Cwave%5Cwave_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 20000, 1}]\r\n\r\n Do[If[FileExistsQ[\r\n    \"F%3A%5Cdataofion1%5Cp_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n  DeleteFile[\"F%3A%5Cdataofion1%5Cp_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 20000, 1}]\r\n    Do[If[FileExistsQ[\r\n    \"F%3A%5Cdataofion1%5Cp_exc_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n  DeleteFile[\"F%3A%5Cdataofion1%5Cp_exc_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 20000, 1}]",
+   "value": " Do[If[FileExistsQ[\r\n   \"F%3A%5Cdataofion1%5Cwave%5Cwave_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n  DeleteFile[\"F%3A%5Cdataofion1%5Cwave%5Cwave_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 20000, 1}]\r\n\r\n Do[If[FileExistsQ[\r\n    \"p_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n  DeleteFile[\"p_vgr_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 20000, 1}]\r\n    Do[If[FileExistsQ[\r\n    \"F%3A%5Cdataofion1%5Cp_exc_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"],\r\n  DeleteFile[\"F%3A%5Cdataofion1%5Cp_exc_vj%5Cp_vj_at_pos\" <> ToString[i] <> \"_fs.dat\"], Skip], {i, \r\n   1, 20000, 1}]",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
