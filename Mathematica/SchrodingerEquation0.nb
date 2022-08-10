@@ -45,6 +45,194 @@ Cell[BoxData[
   3.8686083255248747`*^9}},ExpressionUUID->"00224bab-573e-4032-99c9-\
 0ab17b3808bf"],
 
+Cell[CellGroupData[{
+
+Cell["", "Subtitle",ExpressionUUID->"62fb8bc3-a7d1-4b2d-876d-222f6187d850"],
+
+Cell["Representation ", "Subtitle",
+ CellChangeTimes->{{3.8686181521313066`*^9, 
+  3.8686181656699424`*^9}},ExpressionUUID->"5cbc512e-2afa-4496-9f86-\
+08dd97c3fa37"],
+
+Cell[TextData[{
+ "Rectangular-shaped phase space. the extent in coordinate space is ",
+ Cell[BoxData[
+  FormBox["L", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "610a0d99-b0c0-4a6d-accd-13b63d307a34"],
+ StyleBox[", ",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "the extent in momentum space is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", " ", 
+    SubscriptBox["P", "max"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "07c3f7bd-f2e8-4d6e-bdf8-2fe43da843a5"],
+ ". the number of grid points ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"N", "=", "25"}], ",", " ", 
+    RowBox[{
+     RowBox[{"\[CapitalDelta]", " ", "x"}], "=", 
+     RowBox[{
+      RowBox[{"L", "/", "N"}], "=", 
+      RowBox[{
+       RowBox[{"h", "/", "2"}], 
+       SubscriptBox["P", "max"]}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "8d55aedb-7113-47f9-a38d-2ac483969d85"],
+ ", and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[CapitalDelta]", " ", "p"}], "=", 
+    RowBox[{
+     RowBox[{"h", "/", "\[CapitalDelta]"}], " ", "x"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "07b907be-899c-451b-9d68-61c7504da6f9"],
+ " \nConsider a approximating an arbitrary function ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", "(", "x", ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "0c58f65b-9cd6-43f0-b851-6d1f76c6489c"],
+ " by a set of function ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["g", 
+     RowBox[{"n", " "}]], "(", "x", ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ae66954f-d19c-4011-8359-9529c15338b0"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.868618212853859*^9, 3.8686182415611095`*^9}, {
+  3.868618313690693*^9, 3.868618378867837*^9}, {3.8686187277539864`*^9, 
+  3.868618810466696*^9}, {3.868618953613559*^9, 3.8686189536229973`*^9}, {
+  3.868619020203374*^9, 3.8686190295132895`*^9}, {3.8686191107157793`*^9, 
+  3.8686192864324884`*^9}, {3.868619319412585*^9, 3.868619445767301*^9}, {
+  3.868619477052006*^9, 3.868619514272092*^9}, {3.8686195494120545`*^9, 
+  3.868619782662944*^9}, {3.8686198627922535`*^9, 3.86861987428102*^9}},
+ TextAlignment->Left,ExpressionUUID->"d2bd3645-10a4-433c-9647-5b735c8dc9f7"],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"f", 
+          RowBox[{"(", "x", ")"}]}], "\[TildeTilde]", 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"n", "=", "0"}], 
+           RowBox[{"N", "-", "2"}]], 
+          RowBox[{
+           SubscriptBox["a", 
+            RowBox[{"n", " "}]], 
+           RowBox[{
+            SubscriptBox["g", "n"], "(", "x", ")"}], " "}]}]}]}
+      },
+      GridBoxAlignment->{"Columns" -> {{"Center"}}}]}
+   },
+   GridBoxItemSize->{"Columns" -> {{
+        Scaled[0.96]}}}], 
+  TraditionalForm]],ExpressionUUID->"b472faac-9035-4f92-9d6d-915a28ffe68c"]], \
+"Text",
+ CellChangeTimes->{{3.868619840146192*^9, 
+  3.8686198661812086`*^9}},ExpressionUUID->"7353e74b-54ab-4de8-b3f9-\
+284279586fad"],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[GridBox[{
+    {
+     RowBox[{
+      RowBox[{"f", 
+       RowBox[{"(", 
+        SubscriptBox["x", "j"], ")"}]}], "=", 
+      RowBox[{
+       UnderoverscriptBox["\[Sum]", 
+        RowBox[{"n", "=", "0"}], 
+        RowBox[{"N", "-", "1"}]], 
+       RowBox[{
+        SubscriptBox["a", "n"], 
+        SubscriptBox["g", "n"], 
+        RowBox[{"(", 
+         SubscriptBox["x", "j"], ")"}]}]}]}]}
+   },
+   GridBoxItemSize->{"Columns" -> {{
+        Scaled[0.96]}}}], 
+  TraditionalForm]],ExpressionUUID->"62c5e4d7-ee08-45e7-b985-0daaefff32e3"]], \
+"Text",
+ CellChangeTimes->{{3.8686198565389647`*^9, 
+  3.8686198783092637`*^9}},ExpressionUUID->"ffa2553d-b1d7-4fdd-a5dd-\
+933cc58e09e6"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.868618246330222*^9, 3.868618248024722*^9}, {
+  3.868618301066955*^9, 
+  3.8686183099435387`*^9}},ExpressionUUID->"dee76ee5-4d3e-4a1d-82be-\
+c27f4e8099f4"],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{"f", "=", 
+         RowBox[{"G", " ", "a"}]}]}
+      },
+      GridBoxAlignment->{"Columns" -> {{"Center"}}}]}
+   },
+   GridBoxItemSize->{"Columns" -> {{
+        Scaled[0.96]}}}], 
+  TraditionalForm]],ExpressionUUID->"2a4d5a27-abfb-4dc5-a803-44144561aefe"]], \
+"Text",
+ CellChangeTimes->{{3.8686199753346987`*^9, 
+  3.8686200003765416`*^9}},ExpressionUUID->"efa302b1-4c91-4bdf-88d7-\
+e1b5fd0c8fc6"],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{"a", "=", 
+         RowBox[{
+          SuperscriptBox["G", 
+           RowBox[{"-", "1"}]], "f"}]}]}
+      },
+      GridBoxAlignment->{"Columns" -> {{"Center"}}}]}
+   },
+   GridBoxItemSize->{"Columns" -> {{
+        Scaled[0.96]}}}], 
+  TraditionalForm]],ExpressionUUID->"aeefdc3b-7414-4775-aa5b-05d80f665776"]], \
+"Text",
+ CellChangeTimes->{{3.86861998824389*^9, 
+  3.8686200210064726`*^9}},ExpressionUUID->"ba88b004-6172-4462-aa14-\
+2e3937bdc422"],
+
+Cell[BoxData[Cell[TextData[Cell[BoxData[
+  FormBox[Cell[TextData[Cell[BoxData[
+    FormBox[Cell[TextData[Cell[BoxData[
+      FormBox[Cell[TextData[Cell[BoxData[
+        FormBox["\[Placeholder]", TraditionalForm]],
+        FormatType->TraditionalForm,ExpressionUUID->
+        "7d1bfe44-a379-436a-8387-1ff811eff879"]],ExpressionUUID->
+        "d515b9fc-0607-4a1a-8424-31170fad01e8"], TraditionalForm]],
+      FormatType->TraditionalForm,ExpressionUUID->
+      "027918f7-36aa-4e4e-a3b8-fa7da8869f0c"]],ExpressionUUID->
+      "00c406d3-615b-4e7c-855d-0895e31453ee"], TraditionalForm]],
+    FormatType->TraditionalForm,ExpressionUUID->
+    "d6dbe77f-a63e-46e0-9969-801a9d51ec9e"]],ExpressionUUID->
+    "4d187f03-8ecb-46e0-9a7a-3030fd28a648"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f151f43e-02f4-4e78-a8da-9071fe636713"]],ExpressionUUID->
+  "a597831d-6513-498c-b51f-8982e99cfdcb"]], "Input",
+ CellChangeTimes->{{3.8686200651839204`*^9, 
+  3.868620081921506*^9}},ExpressionUUID->"54a1fbf8-7123-4bd0-bd77-\
+fc9280d33c28"],
+
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
   RowBox[{"SetDirectory", "[", 
